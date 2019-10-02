@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Getting Started
 This repository aims to assist you in beginning work on a MERN stack application with a solid file structure as a foundation. To get started make a copy of this template repo for your project teams. 
 
-Since this project will hold both the client application and the server application there will be node modules in two different places. To install in both places run `npm run-script install-all` which is a script we have defined in package.json .
+Since this project will hold both the client application and the server application there will be node modules in two different places. First run `npm install` from the root. After this you will run `npm run-script install-all` from the root. From now on run this command anytime you want to install all modules again. This is a script we have defined in package.json .
 
 ## File structure
 ####`client` - Holds the client application    - 
