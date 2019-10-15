@@ -4,11 +4,12 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha server/tests",
     "install-all": "concurrently \"npm install\" \"cd client && npm install\"",
-    "start": "concurrently \"cd server && node server.js\" \"cd client && npm start\"",
     "client": "cd client && npm start",
-    "server": "cd server && node server.js"
+    "dev": "concurrently \"nodemon server.js\" \"cd client && npm run start\"",
+    "start": "node server.js", 
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,14 @@
   "license": "MIT",
   "dependencies": {
     "concurrently": "^4.1.0",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.1",
+    "morgan": "^1.9.1",
+    "should": "^13.2.3",
+    "supertest": "^4.0.2",
+    "mocha": "^6.2.1"
   },
   "homepage": "https://github.com/UFWebApps/React_Template_Repo#readme"
 }
