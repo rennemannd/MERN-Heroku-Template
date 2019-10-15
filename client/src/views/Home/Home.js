@@ -16,9 +16,8 @@ function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Learn React
                 </a>
-            </header>d
+            </header>
         </div>
     );
 }
