@@ -1,0 +1,237 @@
+
+#wrapper {
+    display: grid;
+    max-width: 1000px;
+    width: 97%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-auto-rows: min-content;
+    grid-gap: 20px;
+    margin: 20px auto 0;
+}
+
+.cardList {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+#homeBody {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 97%;
+    margin: 20px auto 0;
+    max-width: 1000px;
+}
+
+/* Position of each element */
+#slideshow {
+    grid-column: 1 / 4;
+    grid-row: 1;
+}
+
+.image-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+.image-container img {
+    flex-shrink: 0;
+    -webkit-flex-shrink: 0;
+    max-width: 65%;
+    max-height: 100%;
+}
+
+#promote {
+    grid-column: 1;
+    grid-row: 2;
+    position: relative;
+}
+
+#support {
+    grid-column: 2;
+    grid-row: 2;
+    position: relative;
+}
+
+#create {
+    grid-column: 3;
+    grid-row: 2;
+    position: relative;
+}
+
+#events-wrapper {
+    grid-column: 1 / 4;
+    grid-row: 3;
+}
+
+#get-involved {
+    grid-column: 1 / 4;
+    grid-row: 4;
+}
+
+/* Events element CSS */
+#events-grid {
+    display: grid;
+    margin-top: -15px;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#upcoming-events-title {
+    margin-bottom: 0;
+}
+
+
+
+
+.event-title {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 6px;
+    font-size: 20px;
+}
+
+
+p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 6px;
+    width: 80%;
+}
+
+
+/* Get involved styling */
+
+#get-involved-title {
+    margin-bottom: 0;
+}
+
+#get-involved-text {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 100%;
+    max-height: 400px;
+    position: relative;
+    margin: auto;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    min-width: 100%;
+}
+
+.slide {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 3px 3px 3px 3px;
+}
+
+.carousel .slide .legend {
+    -webkit-transition: all .5s ease-in-out !important;
+    -moz-transition: all .5s ease-in-out !important;
+    -ms-transition: all .5s ease-in-out !important;
+    -o-transition: all .5s ease-in-out !important;
+    transition: all .5s ease-in-out !important;
+    position: absolute !important;
+    display: flex;
+    justify-content: center;
+    transform: translateY(200%);
+    bottom: 40px !important;
+    left: 50% !important;
+    margin-left: -45% !important;
+    width: 90% !important;
+    border-radius: 10px !important;
+    background: #fff !important;
+    color: #000 !important;
+    padding: 10px !important;
+    font-size: 12px !important;
+    text-align: center !important;
+    opacity: .25 !important;
+    -webkit-transition: opacity .35s ease-in-out !important;
+    -moz-transition: opacity .35s ease-in-out !important;
+    -ms-transition: opacity .35s ease-in-out !important;
+    -o-transition: opacity .35s ease-in-out !important;
+    transition: opacity .35s ease-in-out !important;
+}
+
+.carousel:hover .slide .legend {
+    opacity: 1 !important;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+
+/* For mobile phones */
+@media only screen and (max-width: 600px) {
+
+    #wrapper {
+        display: grid;
+        width: 95%;
+        max-width: 500px;
+        margin: 0 auto;
+        margin-top: 10px;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 120px) repeat(3, 167px);
+        grid-auto-rows: min-content;
+        grid-gap: 10px;
+    }
+
+    #wrapper > div {
+        border-radius: 5px;
+    }
+
+    /* Position of the elements */
+    #slideshow {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    #promote {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    #support {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    #create {
+        grid-column: 1;
+        grid-row: 4;
+    }
+
+    #events-wrapper {
+        grid-column: 1;
+        grid-row: 5 / 8;
+    }
+
+    #events-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 133px;
+        grid-gap: 10px;
+    }
+
+    #get-involved {
+        grid-column: 1;
+        grid-row: 8;
+    }
+}
