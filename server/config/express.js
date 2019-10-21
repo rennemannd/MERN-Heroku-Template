@@ -23,7 +23,7 @@ module.exports.init = function () {
     //body parsing middleware 
     app.use(bodyParser.json());
 
-    //serve client files
+    //serve static files
     app.use(express.static(path.join(__dirname, '../../client/build')));
 
     //add a router
