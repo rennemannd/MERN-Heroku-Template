@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This project contains an example project board meant to showcase how one can be used. The issues posted to it are not real issues.
 
 #### _**IMPORTANT NOTE**_ - 
-This project does not have a mongoDB connection setup. To set this up first uncomment the code at the top of express.js and then create a config file which exports your db.uri connection.
+This project does not have a mongoDB connection setup. To set this up first uncomment the code at the top of server.js and then create a config file which exports your db.uri connection.
 
 ## Getting Started
 This repository aims to assist you in beginning work on a MERN stack application with a solid file structure as a foundation. To get started make a copy of this template repo for your project teams.
