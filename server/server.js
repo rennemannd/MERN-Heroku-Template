@@ -1,10 +1,10 @@
 const path = require('path'),
     express = require('express'),
     mongoose = require('mongoose'),
-    config = require('./config'),
+    config = require('./config/config.example'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
-    exampleRouter = require('../routes/examples.server.routes')
+    exampleRouter = require('./routes/examples.server.routes');
 
 //connect to database
 // mongoose.connect(config.db.uri, {
