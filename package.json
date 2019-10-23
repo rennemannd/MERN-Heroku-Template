@@ -7,13 +7,15 @@
     "test": "mocha server/tests",
     "install-all": "concurrently \"npm install\" \"cd client && npm install\"",
     "client": "cd client && npm start",
-    "dev": "concurrently \"nodemon server.js\" \"cd client && npm run start\"",
-    "start": "node server.js", 
+    "server": "nodemon server/server.js",
+    "dev": "concurrently \"nodemon server/server.js\" \"cd client && npm run start\"",
+    "build": "cd client && npm build",
+    "start": "node server/config/express.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/UFWebApps/React_Template_Repo.git"
+    "url": "https://github.com/UFWebApps/React_Template_Repo.git"
   },
   "keywords": [],
   "author": "Dakota Rennemann",

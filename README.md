@@ -1,9 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project contains an example project board meant to showcase how one can be used. The issues posted to it are not real issues.
+
+#### _**IMPORTANT NOTE**_ - 
+This project does not have a mongoDB connection setup. To set this up first uncomment the code at the top of express.js and then create a config file which exports your db.uri connection.
 
 ## Getting Started
-This repository aims to assist you in beginning work on a MERN stack application with a solid file structure as a foundation. To get started make a copy of this template repo for your project teams. 
+This repository aims to assist you in beginning work on a MERN stack application with a solid file structure as a foundation. To get started make a copy of this template repo for your project teams.
 
 Since this project will hold both the client application and the server application there will be node modules in two different places. First run `npm install` from the root. After this you will run `npm run-script install-all` from the root. From now on run this command anytime you want to install all modules again. This is a script we have defined in package.json .
+
+This app can be deployed directly to heroku since there is a script defined in package.json which will automatically handle building and deploying the app. For more information on deploying to heroku reference the extra resources at the bottom of this file. 
 
 ## File structure
 #### `client` - Holds the client application
@@ -11,12 +17,12 @@ Since this project will hold both the client application and the server applicat
 - #### `src`
     - #### `assets` - This folder holds assets such as images, docs, and fonts
     - #### `components` - This folder holds all of the different components that will make up our views
-    - #### `views` - These represent a unique page on the website i.e. Home or About.
+    - #### `views` - These represent a unique page on the website i.e. Home or About. These are still normal react components.
     - #### `App.js` - This is what renders all of our browser routes and different views
     - #### `index.js` - This is what renders the react app by rendering App.js, should not change
 - #### `package.json` - Defines npm behaviors and packages for the client
 #### `server` - Holds the server application
-#### `package.json` - Defines npm behaviors like the scripts defined in the next section
+#### `package.json` - Defines npm behaviors like the scripts defined in the next section of the README
 #### `.gitignore` - Tells git which files to ignore
 #### `README` - This file!
 
@@ -25,7 +31,7 @@ Since this project will hold both the client application and the server applicat
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run-script dev`
 
 Runs both the client app and the server app in development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view the client in the browser.
@@ -46,15 +52,17 @@ Runs just the server in development mode.<br>
 Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+If deploying to heroku this does not need to be run since it is handled by the heroku-postbuild script<br>
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn how to setup a local MongoDB instance for testing, check out how to [Connect to MongoDB](https://docs.mongodb.com/guides/server/drivers/).
+
+To learn how to deploy a full-stack web app to heroku, check out [this great guide](https://daveceddia.com/deploy-react-express-app-heroku/).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
