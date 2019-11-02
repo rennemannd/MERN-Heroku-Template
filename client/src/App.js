@@ -17,8 +17,8 @@ const App = () => {
         <Route exact path="/">
           <Redirect to="/Home" />
         </Route>
+        <Route exact path="/CaregiverPage"><CaregiverTest /></Route>
         <Route component={NotFound}/>
-        <Route exact path="/CaregiverPage"> <CaregiverTest /></Route>
       </Switch>
     </div>
   );
