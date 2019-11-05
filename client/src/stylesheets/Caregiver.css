@@ -1,0 +1,64 @@
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 40vmin;
+}
+
+.App-header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #09d3ac;
+}
+
+.page-wrapper {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.component-wrapper {
+  background-color: #343a40;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin-top: 1em;
+  padding: 30px;
+  width: 100%;
+}
+
+.LHS-wrapper {
+  width: 35%;
+}
+
+.RHS-wrapper {
+  width: 62%;
+}
+
+.patient-dropdown {
+  margin: 20px;
+}
+
+#AddNotes {
+  min-height: 50px;
+}
+
+/* Media */
+
+@media screen and (max-width: 768px) {
+  .page-wrapper {
+    flex-wrap: wrap;
+  }
+
+  .component-wrapper {
+    flex-basis: 100%;
+  }
+}

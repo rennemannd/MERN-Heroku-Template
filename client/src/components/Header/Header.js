@@ -1,30 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Header.css';
+import '../../stylesheets/Header.css';
 
 const Header = () => {
     return (
-        <div className='topnav'>
-            {/* Logo */}
-            <Link id="logo-link" to="/">
-                <img className="topnav-logo" src={ "/logo192.png" } alt="React logo" />
-            </Link>
+      <div>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          {/* Logo */}
+          <Link id="logo-link" to="/"><p>LOGO</p></Link>
+          {/* Navbar links */}
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="topnav-link" to='/Caretaker'>Caretaker</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="topnav-link" to='/Caregiver'>Caregiver</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="topnav-link" to="/PatientCreate">Create Patient</Link>
+            </li>
+          </ul>
 
-            {/* Page Links */}
-            <div className="topnav-right">
-                <Link className="topnav-link" to='/Register'>Sign in</Link>
-                <Link className="topnav-link" to='/projects'>Projects</Link>
-                <a className="topnav-link" target='_blank' rel="noopener noreferrer" href="https://www.facebook.com/groups/ufosc/events/?source=4&action_history=null&filter=calendar">
-                    Events
-                    <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6"></i>
-                </a>
-                <a className="topnav-link" target='_blank' rel="noopener noreferrer" href="https://github.com/ufosc/club-resources">
-                    Resources
-                    <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6 right-4"></i>
-                </a>
-                <Link className="topnav-link" to="/about">About</Link>
-            </div>
-        </div>
+        </nav>
+      </div>
+
     )
 }
 

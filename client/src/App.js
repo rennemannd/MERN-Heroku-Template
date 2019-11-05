@@ -3,7 +3,7 @@ import { Route, Switch, Redirect  } from 'react-router-dom';
 import Home from "./views/Home/Home"
 import NotFound from "./views/NotFound"
 import Header from "./components/Header/Header"
-import CaregiverTest from "./views/Caregiver/Caregiver"
+import CaregiverPage from "./views/Caregiver/Caregiver"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 
@@ -17,7 +17,7 @@ const App = () => {
         <Route exact path="/">
           <Redirect to="/Home" />
         </Route>
-        <Route exact path="/CaregiverPage"><CaregiverTest /></Route>
+        <Route exact path="/Caregiver"><CaregiverPage /></Route>
         <Route component={NotFound}/>
       </Switch>
     </div>

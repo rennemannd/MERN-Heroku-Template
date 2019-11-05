@@ -1,0 +1,21 @@
+.topnav-link{
+  color: white;
+  padding-left: 25px;
+}
+
+.topnav-link:link {
+  text-decoration: none;
+}
+
+.topnav-link:visited {
+  text-decoration: none;
+}
+
+.topnav-link:hover {
+  text-decoration: none;
+  color: gray;
+}
+
+.topnav-link:active {
+  text-decoration: none;
+}

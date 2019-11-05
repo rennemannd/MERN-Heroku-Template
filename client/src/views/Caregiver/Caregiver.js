@@ -1,26 +1,39 @@
 import React from 'react';
-import logo from '../../assets/logo.svg';
-import './Caregiver.css';
+import PatientDropdown from '../../components/PatientDropdown.js';
+import CaregiverLogArea from './CaregiverLogArea.js';
+import RecentLogs from './RecentLogs.js'
+import WorkSched from './WorkSchedule.js'
+import CaregiverCheckboxArea from './CaregiverCheckboxArea.js';
+import GoogleArea from '../../components/GoogleArea.js';
+import '../../stylesheets/Caregiver.css';
 
-function Home() {
+function Caregiver() {
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <p>Hello!!!</p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                </a>
-            </header>
-        </div>
+      <div className="App">
+        {/* Navbar with logo */}
+        <header className="App-header">
+          <div className="container-fluid">
+            <div className="page-wrapper">
+              <div className="component-wrapper LHS-wrapper">
+                < PatientDropdown />
+                < CaregiverLogArea />
+                < RecentLogs />
+                < WorkSched />
+              </div>
+              <div className="component-wrapper RHS-wrapper">
+                < CaregiverCheckboxArea />
+              </div>
+            </div>
+            <div className="page-wrapper">
+              <div className="component-wrapper">
+                < GoogleArea />
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
+
     );
 }
 
-export default Home;
+export default Caregiver;
