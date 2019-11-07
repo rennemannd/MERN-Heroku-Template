@@ -13,7 +13,7 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
+    color: black;
 }
 
 .App-link {
@@ -28,7 +28,7 @@
 }
 
 .component-wrapper {
-  background-color: #343a40;
+  background-color: #b9bfc6;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   margin-top: 1em;
   padding: 30px;
