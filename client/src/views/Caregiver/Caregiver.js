@@ -4,7 +4,7 @@ import CaregiverLogArea from './CaregiverLogArea.js';
 import RecentLogs from './RecentLogs.js'
 import WorkSched from './WorkSchedule.js'
 import CaregiverCheckboxArea from './CaregiverCheckboxArea.js';
-import GoogleArea from '../../components/GoogleArea.js';
+import GoogleArea from '../../components/AppCalendar.js';
 import '../../stylesheets/Caregiver.css';
 
 function Caregiver() {
