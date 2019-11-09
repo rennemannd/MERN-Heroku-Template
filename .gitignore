@@ -43,6 +43,7 @@ yarn-error.log*
 
 ### VisualStudioCode ###
 .vscode/*
+.vs/*
 
 ### VisualStudioCode Patch ###
 # Ignore all local history of files

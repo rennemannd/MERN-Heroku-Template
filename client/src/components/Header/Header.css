@@ -235,3 +235,39 @@ p {
         grid-row: 8;
     }
 }
+
+
+
+
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+
+}
+
+.dropdown-toggle.dropdown-toggle-split.btn {
+    display: none;
+}
+
+.navButton {
+    background: none;
+    color: rgba(0,0,0,0.5);
+    border: none;
+}
+
+.navButton:hover {
+    border: none !important;
+    background: none !important;
+    color: black !important;
+}
+
+.navButton:focus, .navButton:active {
+    border: none !important;
+    background: none !important;
+    color: black !important;
+    background-color: none !important;
+    box-shadow: none !important;
+}
+
+
