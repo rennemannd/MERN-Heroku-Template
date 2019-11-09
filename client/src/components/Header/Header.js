@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Dropdown, ButtonGroup, SplitButton, NavItem} from 'react-bootstrap';
+import { Navbar, Nav, Button, Dropdown} from 'react-bootstrap';
 
 const Header = () => {
     return (
@@ -55,6 +55,12 @@ const Header = () => {
                                 <Dropdown.Item href="/projects/#renewables">Renewables</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
+                        <div>
+                            <Button className="navButton" href="/publications">Publications</Button>
+                        </div>
+                        <div>
+                            <Button className="navButton" href="/press">Press Releases</Button>
+                        </div>
                         <div>
                             <Button className="navButton" href="/contact">Contact</Button>
                         </div>
