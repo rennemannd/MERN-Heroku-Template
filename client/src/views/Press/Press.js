@@ -1,8 +1,6 @@
 import React from 'react';
 import './Press.css';
 
-import React from 'react';
-
 const PRESS_API = '/api/press';
 class Press extends React.Component {
     constructor(props) {
