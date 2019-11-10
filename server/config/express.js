@@ -23,10 +23,15 @@ module.exports.init = () => {
     app.use(morgan('dev'));
 
     // body parsing middleware
-    app.use(bodyParser.json());
+    app.use(bodyParser.json({limit: '50mb', extended: true})),
+    app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
     // add a router
-    app.use('/api/example', exampleRouter);
+    app.use('/api/press', pressRouter, function (res, req, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
 
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files
