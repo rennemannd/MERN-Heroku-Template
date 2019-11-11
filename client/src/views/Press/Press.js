@@ -11,7 +11,6 @@ class Press extends React.Component {
     componentDidMount() {
         fetch(PRESS_API)
         .then(response => response.json())
-        .then(response => {console.log(response); return response;})
         .then(response => this.setState({ pressReleases: response }))
         .catch(err => {
             console.log("Error fetching Press Releases:" + err);
@@ -22,7 +21,9 @@ class Press extends React.Component {
 
         const { pressReleases } = this.state;
 
-        const pressList = pressReleases.map(press => {
+        const pressList = pressReleases.sort(function (a, b) {
+            return parseInt(b.displayed_date) - parseInt(a.displayed_date)  //Sort with most recent date first.
+          }).map(press => {
 			return (
 				<tr key={press._id}>
 					<td>{press.text}</td>
