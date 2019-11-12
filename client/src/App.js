@@ -9,25 +9,29 @@ import Press from "./views/Press/Press"
 import Publications from "./views/Publications/Publications"
 import NotFound from "./views/NotFound"
 import Header from "./components/Header/Header"
+import Footer from "./components/Footer/Footer"
 
 
 const App = () => {
-  return (
+    return (
     <div>
       <Header />
-      <Switch>
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-        <Route exact path="/about" component={About} />
-        <Route exact path="/technology" component={Technology} />
-        <Route exact path="/projects" component={Projects} />
-        <Route exact path="/contact" component={Contact} />
-        <Route exact path="/press" component={Press} />
-        <Route exact path="/publications" component={Publications} />
-        <Route component={NotFound}/>
-      </Switch>
+      <div style={{ paddingTop: '60px' }}>
+        <Switch >
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/">
+                <Redirect to="/home" />
+            </Route>
+            <Route exact path="/about" component={About} />
+            <Route exact path="/technology" component={Technology} />
+            <Route exact path="/projects" component={Projects} />
+            <Route exact path="/contact" component={Contact} />
+            <Route exact path="/press" component={Press} />
+            <Route exact path="/publications" component={Publications} />
+            <Route component={NotFound}/>
+        </Switch>
+        <Footer />
+      </div>
     </div>
   );
 }

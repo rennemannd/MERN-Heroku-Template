@@ -237,13 +237,16 @@ p {
 }
 
 
+.navbar {
+    position: fixed;
+    width: 100%;
+    min-height: 60px;
+}
 
-
-
+     
 .dropdown:hover .dropdown-menu {
     display: block;
     margin-top: 0;
-
 }
 
 .dropdown-toggle.dropdown-toggle-split.btn {

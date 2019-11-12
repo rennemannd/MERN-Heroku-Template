@@ -6,12 +6,7 @@ import { Navbar, Nav, Button, Dropdown} from 'react-bootstrap';
 const Header = () => {
     return (
         <div className='topnav'>
-            {/* Logo }
-            <Link id="logo-link" to="/">
-                <img className="topnav-logo" src={ "/logo192.png" } alt="React logo" />
-            </Link>
-            {*/}
-            {/* Page Links */}
+
 
             <Navbar bg="light" expand="lg">
                 <Navbar.Brand href="/home">BioTork
