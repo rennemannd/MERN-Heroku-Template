@@ -25,11 +25,17 @@ class Press extends React.Component {
             return parseInt(b.displayed_date) - parseInt(a.displayed_date)  //Sort with most recent date first.
           }).map(press => {
 			return (
-				<tr key={press._id}>
-					<td>{press.text}</td>
-                    <img src={"data:image/png;base64," + press.image} />
-                    <td>{press.displayed_date}</td>
-				</tr>
+                <div className="press-release">
+                    <tr key={press._id}>
+                        <img src={"data:image/png;base64," + press.image} />
+                        <div>
+                            <td>{press.text}</td>
+                        </div>
+                        <div>
+                            <td>{press.displayed_date}</td>
+                        </div>
+                    </tr>
+                </div>
 			);
 		});
 
