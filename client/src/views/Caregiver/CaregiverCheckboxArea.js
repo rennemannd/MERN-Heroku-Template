@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
+import TaskList from './tasks.js';
 
 class CaregiverCheckbox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      task: false,
-      task2: false,
+      taskComplete: false,
       message: ""
     };
 
@@ -28,34 +28,16 @@ class CaregiverCheckbox extends React.Component {
     console.log(this.state);
   }
 
+
   render() {
     return (
       <div>
         <form className="form" onSubmit={this.handleSubmit}>
 
-          <div className="form-group">
-            <label className="checkbox">
-              <input
-                name="task"
-                type="checkbox"
-                checked={this.state.task}
-                onChange={this.handleChange}
-              />
-              Task 1
-            </label>
-          </div>
+        <TaskList
+        data={this.props.data}
+        taskArray={this.props.taskArray} />
 
-          <div className="form-group">
-            <label className="checkbox">
-              <input
-                name="task2"
-                type="checkbox"
-                checked={this.state.task2}
-                onChange={this.handleChange}
-              />
-              Task 2
-            </label>
-          </div>
 
           <div className="form-group">
             <div>
@@ -85,3 +67,9 @@ class CaregiverCheckbox extends React.Component {
 
 
 export default CaregiverCheckbox;
+
+/*
+{this.state.adls.map((task,key) =>
+  <Tasks task={task} key={task.id} />
+)}
+*/

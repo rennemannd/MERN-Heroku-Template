@@ -7,7 +7,26 @@ import CaregiverCheckboxArea from './CaregiverCheckboxArea.js';
 import Calendar from '../../components/AppCalendar.js';
 import '../../stylesheets/Caregiver.css';
 
-function Caregiver() {
+class Caregiver extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      taskArray: [
+        {id: 1, checked: false},
+        {id: 7, checked: false},
+        {id: 3, checked: false},
+        {id: 5, checked: false},
+        {id: 19, checked: false},
+        {id: 35, checked: false},
+        {id: 22, checked: false}
+      ]
+    };
+
+  }
+
+
+  render() {
+
     return (
       <div className="App">
         {/* Navbar with logo */}
@@ -21,7 +40,9 @@ function Caregiver() {
                 < WorkSched />
               </div>
               <div className="component-wrapper RHS-wrapper">
-                < CaregiverCheckboxArea />
+                < CaregiverCheckboxArea
+                  data={this.props.data}
+                  taskArray={this.state.taskArray} />
               </div>
             </div>
             <div className="page-wrapper">
@@ -34,6 +55,7 @@ function Caregiver() {
       </div>
 
     );
+  }
 }
 
 export default Caregiver;

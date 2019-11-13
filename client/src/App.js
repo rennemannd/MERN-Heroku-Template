@@ -5,6 +5,7 @@ import NotFound from "./views/NotFound"
 import Header from "./components/Header/Header"
 import CaregiverPage from "./views/Caregiver/Caregiver"
 import "bootstrap/dist/css/bootstrap.min.css"
+import data from './dataADL';
 
 
 
@@ -17,7 +18,7 @@ const App = () => {
         <Route exact path="/">
           <Redirect to="/Home" />
         </Route>
-        <Route exact path="/Caregiver"><CaregiverPage /></Route>
+        <Route exact path="/Caregiver"><CaregiverPage data={data} /></Route>
         <Route component={NotFound}/>
       </Switch>
     </div>
