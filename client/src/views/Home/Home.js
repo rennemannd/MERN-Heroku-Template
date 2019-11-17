@@ -10,7 +10,7 @@ function Home() {
       <AwesomeSlider>
         <div data-src={require('../../assets/photos/moon.webp')} className="fix"><h1 className="sliderText">Innovation That Excites</h1></div>
         <div data-src={require('../../assets/photos/leaf.webp')} className="fix"><h1 className="sliderText">When You're Here, You're Family</h1></div>
-        <div data-src={require('../../assets/photos/rocks.webp')} className="fix"><h1 className="sliderText">Wendys, Fuck a Hamburger</h1></div>
+        <div data-src={require('../../assets/photos/rocks.webp')} className="fix"><h1 className="sliderText">Wendys, Love a Hamburger</h1></div>
       </AwesomeSlider>
     );
     return (

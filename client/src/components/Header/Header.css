@@ -239,7 +239,7 @@ p {
 
 .navbar {
     position: fixed;
-    z-index: 5;
+    z-index: 99;
     width: 100%;
     min-height: 60px;
 }
