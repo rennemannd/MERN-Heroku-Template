@@ -1,6 +1,14 @@
 const path = require('path'),
     express = require('express'),
-    mongoose = require('mongoose'),
+
+    mongooseSetup = require("./database"),
+    //session = require("expression-session"),
+    //MongoStore = require("connect-mongo")(session),
+    //passport = require("passport"),
+    //index = require("./routes/index"),
+    //users = require("./routes/users"),
+
+    //mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     pressRouter = require('../routes/press.server.routes');
@@ -10,14 +18,21 @@ module.exports.init = () => {
         connect to database
         - reference README for db uri
     */
+    mongooseSetup.start();
+
+
+
+    /*
     mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
         useNewUrlParser: true
     });
     mongoose.set('useCreateIndex', true);
-    mongoose.set('useFindAndModify', false);
+    mongoose.set('useFindAndModify', false);*/
 
     // initialize app
     const app = express();
+    
+
 
     // enable request logging for development debugging
     app.use(morgan('dev'));
