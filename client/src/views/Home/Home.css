@@ -18,11 +18,39 @@
 }
 .awssld {
     height: 85%;
+    --organic-arrow-color: #fff;
+    --control-bullet-color: #fff;
+    --control-bullet-active-color: #fff;
 }
 .awssld__bullets {
     bottom: 1vw;
     z-index: 4;
 }
-.awssld__content > img {
+.awssld__bullets > button {
     opacity: 0.5;
+}
+.awssld__bullets > button:hover {
+    opacity: 0.75;
+}
+.awssld__content {
+    background-color: #1c1c1c;
+}
+.awssld__content > img {
+    opacity: 0.7;
+}
+.sliderText {
+    position: relative;
+    color: white;
+    font-family: Raleway;
+    font-size : 5vw;
+    width: 75%;
+    text-align: center;
+}
+.fix {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.awssld__bulets button {
+
 }
