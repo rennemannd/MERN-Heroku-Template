@@ -10,13 +10,14 @@ import Publications from "./views/Publications/Publications"
 import NotFound from "./views/NotFound"
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
+import './App.css';
 
 
 const App = () => {
     return (
     <div>
       <Header />
-      <div style={{ paddingTop: '60px' }}>
+      <div className="content">
         <Switch >
             <Route exact path="/home" component={Home} />
             <Route exact path="/">
@@ -30,7 +31,9 @@ const App = () => {
             <Route exact path="/publications" component={Publications} />
             <Route component={NotFound}/>
         </Switch>
-        <Footer />
+        <div className="bottom">
+        <Footer/>
+        </div>
       </div>
     </div>
   );

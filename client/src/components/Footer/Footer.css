@@ -1,24 +1,23 @@
 .social {
-    padding-bottom: 10px;
     padding-left: 10px;
     position: center;
     font-size: 20px;
     vertical-align: middle;
-    height: 60px;
-    line-height: 60px;
     color: rgba(0,0,0,0.5);
 }
 
 .footerClass {
     background-color: whitesmoke;
+    z-index: -5;
+    position: relative;
+    bottom: 0px;
 }
 
-.mediaIcon {
-    padding: 3px;
-}
 .rowC {
+    justify-content: center;
+    align-items: center;
     display: flex;
     flex-direction: row;
     height: auto;
-    padding: 12px;
+    padding: 8px;
 }

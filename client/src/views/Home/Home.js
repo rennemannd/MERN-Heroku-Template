@@ -1,36 +1,25 @@
 import React from 'react';
 import logo from '../../assets/logo.svg';
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
 import './Home.css';
 
+
 function Home() {
+    const slider = (
+      <AwesomeSlider>
+        <div data-src={require('../../assets/photos/moon.webp')} className="fix"><h1 className="sliderText">Innovation That Excites</h1></div>
+        <div data-src={require('../../assets/photos/leaf.webp')} className="fix"><h1 className="sliderText">When You're Here, You're Family</h1></div>
+        <div data-src={require('../../assets/photos/rocks.webp')} className="fix"><h1 className="sliderText">Wendys, Fuck a Hamburger</h1></div>
+      </AwesomeSlider>
+    );
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                </a>
-            </header>
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                </a>
-            </header>
+        <div className="grid-container">
+            <div className="gitem">
+                {slider}
+            </div>
+            <div className="gitem2">
+            </div>
         </div>
     );
 }
