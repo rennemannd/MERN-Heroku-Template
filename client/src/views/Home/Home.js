@@ -1,36 +1,25 @@
 import React from 'react';
 import logo from '../../assets/logo.svg';
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
 import './Home.css';
 
+
 function Home() {
+    const slider = (
+      <AwesomeSlider>
+        <div data-src={require('../../assets/photos/moon.webp')} ><h1></h1></div>
+        <div data-src="/path/to/image-1.png" />
+        <div data-src="/path/to/image-2.jpg" />
+      </AwesomeSlider>
+    );
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                </a>
-            </header>
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                </a>
-            </header>
+        <div className="grid-container">
+            <div className="gitem">
+                {slider}
+            </div>
+            <div className="gitem2">
+            </div>
         </div>
     );
 }
