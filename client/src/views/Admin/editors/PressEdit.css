@@ -34,3 +34,8 @@
     padding-top: 20px;
     padding-left: 20px;
 }
+.press-uploadedimage {
+    position: relative;
+    width: auto;
+    height: 150px;
+}

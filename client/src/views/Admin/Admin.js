@@ -1,7 +1,7 @@
 import React from 'react';
 import './Admin.css';
 
-import PressEdit from './editors/PressEdit';
+import PressEdit from './editors/PressEdit'
 
 class Admin extends React.Component {
     constructor(props) {
