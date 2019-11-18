@@ -21,6 +21,8 @@
   "author": "Dakota Rennemann",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^3.0.6",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "concurrently": "^4.1.0",
@@ -33,6 +35,7 @@
     "morgan": "^1.9.1",
     "nodemon": "^1.18.10",
     "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "popper.js": "^1.16.0",
     "react-bootstrap": "^1.0.0-beta.14",
     "should": "^13.2.3",
