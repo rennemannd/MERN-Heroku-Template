@@ -5,8 +5,7 @@ const path = require('path'),
     session = require("express-session"),
     MongoStore = require("connect-mongo")(session),
     passport = require("passport"),
-    //index = require("./routes/index"),
-    //users = require("./routes/users"),
+    users = require("../routes/users"),
 
     //mongoose = require('mongoose'),
     morgan = require('morgan'),
@@ -19,7 +18,7 @@ module.exports.init = () => {
         - reference README for db uri
     */
     mongooseSetup.start();
-    require("./config/passport")(passport);
+    require("./passport")(passport);
 
 
     /*
@@ -72,8 +71,7 @@ module.exports.init = () => {
     });
 
 
-    //app.use("/", index);
-    //app.use("/users", users);
+    app.use("/api/users", users);
 
     // add a router
     app.use('/api/press', pressRouter, function (res, req, next) {
