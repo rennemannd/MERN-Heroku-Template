@@ -51,14 +51,6 @@ module.exports.init = () => {
     app.use(passport.initialize());
     app.use(passport.session());
 
-    //Globals
-    /*app.use((req, res, next) => {
-        if (req.session) {
-            res.locals.session = req.session;
-        }
-        next();
-    });*/
-
     // add routers
     app.use("/api/users", users); //api for user authentication
 
