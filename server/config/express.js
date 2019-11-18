@@ -6,27 +6,16 @@ const path = require('path'),
     MongoStore = require("connect-mongo")(session),
     passport = require("passport"),
     users = require("../routes/users"),
-
-    //mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     pressRouter = require('../routes/press.server.routes');
 
 module.exports.init = () => {
-    /* 
-        connect to database
-        - reference README for db uri
-    */
+    //connect to database
     mongooseSetup.start();
+
+    //config passport
     require("./passport")(passport);
-
-
-    /*
-    mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
-        useNewUrlParser: true
-    });
-    mongoose.set('useCreateIndex', true);
-    mongoose.set('useFindAndModify', false);*/
 
     // initialize app
     const app = express();
@@ -63,18 +52,17 @@ module.exports.init = () => {
     app.use(passport.session());
 
     //Globals
-    app.use((req, res, next) => {
+    /*app.use((req, res, next) => {
         if (req.session) {
             res.locals.session = req.session;
         }
         next();
-    });
+    });*/
 
+    // add routers
+    app.use("/api/users", users); //api for user authentication
 
-    app.use("/api/users", users);
-
-    // add a router
-    app.use('/api/press', pressRouter, function (res, req, next) {
+    app.use('/api/press', pressRouter, function (res, req, next) { //api for press releases
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         next();

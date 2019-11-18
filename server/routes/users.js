@@ -10,37 +10,37 @@ const User = require("../models/user.model");
 
 //Verify - this is for the frontend
 router.get("/verify", (req, res) => {
-    console.log(
+    /*console.log(
         "This is res.locals.session from /verify" +
         JSON.stringify(res.locals.session)
-    );
+    );*/
     console.log("This is req.session from /verify" + JSON.stringify(req.session));
-    console.log(
+    /*console.log(
         "This is res.locals.user from /verify" + JSON.stringify(res.locals.user)
-    );
-    console.log("This is req.user from /verify" + JSON.stringify(req.user));
+    );*/
+    //console.log("This is req.user from /verify" + JSON.stringify(req.user));
     if (req.isAuthenticated()) {
-        const clientUser = {
+        /*const clientUser = {
             id: req.user._id,
             name: req.user.name,
             email: req.user.email,
             loggedIn: true
-        };
+        };*/
         return res.send({
             success: true,
             message: "Valid session",
-            user: clientUser
+            //user: clientUser
         });
     } else {
-        emptyUser = {
+        /*emptyUser = {
             username: "",
             email: "",
             loggedIn: false
-        };
+        };*/
         return res.send({
             success: false,
             message: "Couldn't find session",
-            user: emptyUser
+            //user: emptyUser
         });
     }
 });
@@ -96,7 +96,7 @@ router.post("/register", (req, res) => {
 
         console.log(newUser);
         newUser.password = newUser.generateHash(password);
-        newUser.save((error, user) => {
+        newUser.save((error/*, user*/) => {
             console.log("This is req.session from /register: " + req.session);
             if (error) {
                 errors.push("Server error: registering new user to database");
@@ -116,26 +116,20 @@ router.post("/register", (req, res) => {
 
 //Login handle
 router.post("/login", passport.authenticate("local"), (req, res) => {
-    console.log("This is req.user from /login: " + JSON.stringify(req.user));
+    //console.log("This is req.user from /login: " + JSON.stringify(req.user));
     console.log(
         "This is req.session from /login: " + JSON.stringify(req.session)
     );
     //console.log("This is req.body from /login: " + req.body);
 
-    req.session.userId = req.user._id;
-    res.locals.user = req.user;
-    res.locals.session = req.session;
-    const client = {
-        id: req.user._id,
-        name: req.user.name,
-        email: req.user.email,
-        loggedIn: true
-    };
+    //req.session.userId = req.user._id;
+    //res.locals.user = req.user;
+    //res.locals.session = req.session;
 
     return res.send({
         success: true,
         message: "successful login",
-        user: req.user
+        //user: req.user
     });
     //Our function defined in passport takes care of ths route
 });
