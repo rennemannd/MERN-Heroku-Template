@@ -2,9 +2,9 @@ const path = require('path'),
     express = require('express'),
 
     mongooseSetup = require("./database"),
-    //session = require("expression-session"),
-    //MongoStore = require("connect-mongo")(session),
-    //passport = require("passport"),
+    session = require("express-session"),
+    MongoStore = require("connect-mongo")(session),
+    passport = require("passport"),
     //index = require("./routes/index"),
     //users = require("./routes/users"),
 
