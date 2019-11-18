@@ -27,7 +27,7 @@ class Press extends React.Component {
 			return (
                 <div className="press-release">
                     <tr key={press._id}>
-                        <img src={"data:image/png;base64," + press.image} />
+                        <img src={press.image} />
                         <div>
                             <td>{press.text}</td>
                         </div>

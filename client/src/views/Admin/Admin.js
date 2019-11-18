@@ -22,9 +22,13 @@ class Admin extends React.Component {
                         <div class="sidebar-sticky">
                             <ul class="nav flex-column">
                                 <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("general")}>General</button>
+                                <div class="divider"/>
                                 <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("projects")}>Projects</button>
+                                <div class="divider"/>
                                 <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("press")}>Press Releases</button>
+                                <div class="divider"/>
                                 <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("tech")}>Technology</button>
+                                <div class="divider"/>
                                 <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("about")}>About</button>
                             </ul>
                         </div>
