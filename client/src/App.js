@@ -7,6 +7,7 @@ import Projects from "./views/Projects/Projects"
 import Technology from "./views/Technology/Technology"
 import Press from "./views/Press/Press"
 import Publications from "./views/Publications/Publications"
+import Admin from "./views/Admin/Admin"
 import NotFound from "./views/NotFound"
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
@@ -29,6 +30,7 @@ const App = () => {
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/press" component={Press} />
             <Route exact path="/publications" component={Publications} />
+            <Route exact path="/admin" component={Admin} />
             <Route component={NotFound}/>
         </Switch>
         <div className="bottom">
