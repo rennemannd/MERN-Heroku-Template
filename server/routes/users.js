@@ -9,22 +9,32 @@ const User = require("../models/user.model");
 router.get("/verify", (req, res) => {
 
     console.log("This is req.session from /verify" + JSON.stringify(req.session));
-
     if (req.isAuthenticated()) {
-
+        const clientUser = {
+            name: req.user.name,
+            username: req.user.username,
+            email: req.user.email,
+            loggedIn: true
+        };
         return res.send({
             success: true,
             message: "Valid session",
-
+            user: clientUser
         });
     } else {
-
+        emptyUser = {
+            name: "",
+            username: "",
+            email: "",
+            loggedIn: false
+        };
         return res.send({
             success: false,
             message: "Couldn't find session",
-
+            user: emptyUser
         });
     }
+
 });
 
 //Register Handle
@@ -60,10 +70,11 @@ router.post("/register", (req, res) => {
     }
 
     //Validation passed
-    User.findOne({ username }).then(user => {
+    User.findOne({ username: username }).then(user => {
         if (user) {
             //Flash the error
             errors.push({ msg: "Username is already registered" });
+            console.log("username already registered!!");
             return res.send({
                 success: false,
                 messsage: errors
