@@ -1,6 +1,6 @@
 .grid-container{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
     grid-auto-rows: minmax(5vw, auto);
 }
 .gitem {
@@ -28,13 +28,14 @@
     --control-button-width: 5%;
 }
 .awssld__bullets {
-    bottom: 1vw;
+    bottom: 0.6vw;
     z-index: 4;
 }
 .awssld__bullets > button {
     opacity: 0.5;
-    width: 14px;
-    height: 14px;
+    width: 10px;
+    height: 10px;
+    margin: 7px;
 }
 .awssld__bullets > button:hover {
     opacity: 0.75;
@@ -76,7 +77,7 @@
     grid-column: 1/8;
     background-color: whitesmoke;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
     grid-auto-rows: minmax(10vw, auto);
 }
 .test {
