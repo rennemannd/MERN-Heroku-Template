@@ -1,4 +1,3 @@
-var mongoose = require('mongoose')
 const Press = require('../models/press.server.model.js')
 
 exports.getAll = function(req, res) {
@@ -22,10 +21,10 @@ exports.getAll = function(req, res) {
 };
 
 exports.createNew = function(req, res) {
-    
-    var pressrelease = new Press(req.body);
 
-    console.log(req);
+  if (req.isAuthenticated()) {
+
+    var pressrelease = new Press(req.body);
 
     pressrelease.save(function(err) {
       if(err) {
@@ -35,5 +34,38 @@ exports.createNew = function(req, res) {
         res.json(pressrelease);
       }
     });
+
+  } else {
+
+      res.status(401).send({
+          success: false,
+          message: "Request not authenticated."
+      });
+  }
+
+};
+
+exports.updateExisting = function(req, res) {
+
+  if (req.isAuthenticated()) {
+
+    var pressrelease = new Press(req.body);
+
+    pressrelease.update({_id: pressrelease._id}, function(err) {
+      if(err) {
+        console.log(err);
+        res.status(400).send(err);
+      } else {
+        res.json(pressrelease);
+      }
+    });
+
+  } else {
+
+      res.status(401).send({
+          success: false,
+          message: "Request not authenticated."
+      });
+  }
 
 };

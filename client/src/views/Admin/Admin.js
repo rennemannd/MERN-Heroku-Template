@@ -30,6 +30,8 @@ class Admin extends React.Component {
                                 <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("tech")}>Technology</button>
                                 <div class="divider"/>
                                 <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("about")}>About</button>
+                                <div class="divider"/>
+                                <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("about")}>Access Control</button>
                             </ul>
                         </div>
                     </nav>

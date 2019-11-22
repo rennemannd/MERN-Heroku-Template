@@ -9,7 +9,7 @@ class PressEdit extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          pressText: 'Enter Press Release content here.',
+          pressText: 'Content of Press Release',
           pressImage: '',
           pressDate: new Date(),
           pressReleases: []
@@ -19,7 +19,8 @@ class PressEdit extends React.Component {
         this.handlePressImageChange = this.handlePressImageChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
-
+      
+      //Retreive existing Press Releases from API.
       componentDidMount() {
         fetch(PRESS_API)
         .then(response => response.json())
@@ -51,6 +52,7 @@ class PressEdit extends React.Component {
         });
       };
     
+      //Send new Press Release to API.
       handleSubmit(event) {
         event.preventDefault();
         fetch('/api/press', {
@@ -113,11 +115,9 @@ class PressEdit extends React.Component {
             <div class="rightcolumn">
               {pressList}
             </div>
-              
-            </div>
+          </div>
         );
       }
-
 }
 export default PressEdit;
 
