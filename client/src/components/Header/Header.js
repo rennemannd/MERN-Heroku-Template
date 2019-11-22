@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import { Navbar, Nav, Button, Dropdown} from 'react-bootstrap';
+import { Navbar, Nav, Button, Dropdown, DropdownItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import Logout from "../Logout/Logout";
 
 class Header extends React.Component {
@@ -17,7 +18,7 @@ class Header extends React.Component {
     }
 
     componentDidMount() {
-        this.props.verify("/api/users/verify", data => {
+        /*this.props.verify("/api/users/verify", data => {
             this.setState({
                 verified: data.success
             });
@@ -29,7 +30,7 @@ class Header extends React.Component {
             } else {
                 console.log("Authenticated user data: " + JSON.stringify(data));
             }
-        });
+        });*/
     }
 
     logout() {
@@ -39,7 +40,44 @@ class Header extends React.Component {
     render() {
 
         return (
+            /*<nav className="navbar navbar-light bg-light navbar-expand-lg">
+                <Link to="/" exact className="navbar-brand">
+                    Authentication Presentation
+                </Link>
+                <div className="collapse navbar-collapse">
+                    <ul className="navbar-nav mr-auto">
+                        <li className="navbar-item">
+                            <Link to="/" exact className="nav-link">
+                                Home
+                            </Link>
+                        </li>
 
+                        {!this.props.loggedIn ? (
+                            <>
+
+                                <li className="navbar-item">
+                                    <Link to="/users/login" className="nav-link">
+                                        Login
+                                    </Link>
+                                </li>
+                            </>
+                        ) : (
+                                <>
+                                    <li className="navbar-item">
+                                        <Link to="/dashboard" className="nav-link">
+                                            Dashboard
+                                        </Link>
+                                    </li>
+                                    <li className="navbar-item">
+                                        <Logout logout={this.logout} />
+                                    </li>
+                                </>
+                            )}
+                    </ul>
+                </div>
+            </nav>*/
+
+            
             <div className='topnav'>
 
 
@@ -50,49 +88,79 @@ class Header extends React.Component {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
                             <div>
-                                <Button className="navButton" href="/home">Home</Button>
+                                <Link to = "/home">
+                                    <Button className="navButton">Home</Button>
+                                </Link>
                             </div>
                             <Dropdown >
-                                <Button className="navButton" href="/about">About Us</Button>
+                                <Link to ="/about">
+                                    <Button className="navButton" >About Us</Button>
+                                 </Link>
 
                                 <Dropdown.Toggle split id="dropdown-split-basic" />
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="/about/#timeline">Company Timeline</Dropdown.Item>
-                                    <Dropdown.Item href="/about/#leadership">Leadership</Dropdown.Item>
-                                    <Dropdown.Item href="/about/#sponsors">Sponsors</Dropdown.Item>
+                                    <LinkContainer to="/about/#timeline">
+                                        <Dropdown.Item>Company Timeline</Dropdown.Item>
+                                    </LinkContainer>
+                                    <LinkContainer to="/about/#leadership">
+                                        <Dropdown.Item>Leadership</Dropdown.Item>
+                                    </LinkContainer>
+                                    <LinkContainer to="/about/#sponsors">
+                                        <Dropdown.Item >Sponsors</Dropdown.Item>
+                                    </LinkContainer>
                                 </Dropdown.Menu>
                             </Dropdown>
                             <Dropdown >
-                                <Button className="navButton" href="/technology">Technology</Button>
-
+                                <Link to="/technology">
+                                    <Button className="navButton">Technology</Button>
+                                </Link>
                                 <Dropdown.Toggle split id="dropdown-split-basic" />
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="/technology/#overview">Overview</Dropdown.Item>
-                                    <Dropdown.Item href="/technology/#biotorkadvantage">BioTork Advantages</Dropdown.Item>
+                                    <LinkContainer to="/technology/#overview">
+                                        <Dropdown.Item>Overview</Dropdown.Item>
+                                    </LinkContainer>
+                                    <LinkContainer to="/technology/#biotorkadvantage">
+                                        <Dropdown.Item href="/technology/#biotorkadvantage">BioTork Advantages</Dropdown.Item>
+                                    </LinkContainer>
                                 </Dropdown.Menu>
                             </Dropdown>
                             <Dropdown >
-                                <Button className="navButton" href="/projects">Projects</Button>
-
+                                <Link to="/projects">
+                                    <Button className="navButton">Projects</Button>
+                                </Link>
                                 <Dropdown.Toggle split id="dropdown-split-basic" />
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="/projects/#nutrition">Nutrition</Dropdown.Item>
-                                    <Dropdown.Item href="/projects/#chemicals">Chemicals</Dropdown.Item>
-                                    <Dropdown.Item href="/projects/#pharmacy">Pharmaceuticals</Dropdown.Item>
-                                    <Dropdown.Item href="/projects/#renewables">Renewables</Dropdown.Item>
+                                    <LinkContainer to="/projects/#nutrition">
+                                        <Dropdown.Item>Nutrition</Dropdown.Item>
+                                    </LinkContainer>
+                                    <LinkContainer to="/projects/#chemicals">
+                                        <Dropdown.Item>Chemicals</Dropdown.Item>
+                                    </LinkContainer>
+                                    <LinkContainer to="/projects/#pharmacy">
+                                        <Dropdown.Item>Pharmaceuticals</Dropdown.Item>
+                                    </LinkContainer>
+                                    <LinkContainer to="/projects/#renewables">
+                                        <Dropdown.Item>Renewables</Dropdown.Item>
+                                    </LinkContainer>
                                 </Dropdown.Menu>
                             </Dropdown>
                             <div>
-                                <Button className="navButton" href="/publications">Publications</Button>
+                                <Link to="/publications">
+                                    <Button className="navButton" href="/publications">Publications</Button>
+                                </Link>
                             </div>
                             <div>
-                                <Button className="navButton" href="/press">Press Releases</Button>
+                                <Link to="/press">
+                                    <Button className="navButton" href="/press">Press Releases</Button>
+                                </Link>
                             </div>
                             <div>
-                                <Button className="navButton" href="/contact">Contact</Button>
+                                <Link to="/contact">
+                                    <Button className="navButton" href="/contact">Contact</Button>
+                                </Link>
                             </div>
 
                             {!this.props.loggedIn ? (
@@ -100,9 +168,9 @@ class Header extends React.Component {
                                 </>
                             ) : (
 
-                                    <div>
-                                        <Logout logout={this.logout} />
-                                    </div>
+                                <div>
+                                    <Logout logout={this.logout} />
+                                </div>
 
                                 )}
 
