@@ -9,38 +9,48 @@ const User = require("../models/user.model");
 router.get("/verify", (req, res) => {
 
     console.log("This is req.session from /verify" + JSON.stringify(req.session));
-
     if (req.isAuthenticated()) {
-
+        const clientUser = {
+            name: req.user.name,
+            username: req.user.username,
+            email: req.user.email,
+            loggedIn: true
+        };
         return res.send({
             success: true,
             message: "Valid session",
-
+            user: clientUser
         });
     } else {
-
+        emptyUser = {
+            name: "",
+            username: "",
+            email: "",
+            loggedIn: false
+        };
         return res.send({
             success: false,
             message: "Couldn't find session",
-
+            user: emptyUser
         });
     }
+
 });
 
 //Register Handle
 router.post("/register", (req, res) => {
-    const { name, password, password2 } = req.body;
+    const { name, email, password, password2 } = req.body;
 
     //ensures email isn't case sensitive
-    let { email } = req.body;
-    email = email.toLowerCase();
+    let { username } = req.body;
+    username = username.toLowerCase();
 
     //Do server-side form validation here: password length
     //is the email an actual email etc.
     let errors = [];
 
     //Check required fields
-    if (!name || !email || !password || !password2) {
+    if (!name || !email || !password || !password2 || !username) {
         errors.push({ msg: "Please fill in all fields" });
     }
 
@@ -60,10 +70,11 @@ router.post("/register", (req, res) => {
     }
 
     //Validation passed
-    User.findOne({ email }).then(user => {
+    User.findOne({ username: username }).then(user => {
         if (user) {
             //Flash the error
-            errors.push({ msg: "Email is already registered" });
+            errors.push({ msg: "Username is already registered" });
+            console.log("username already registered!!");
             return res.send({
                 success: false,
                 messsage: errors
@@ -72,6 +83,7 @@ router.post("/register", (req, res) => {
         //Create a new database entry
         const newUser = new User({
             name,
+            username,
             email,
             password
         });
