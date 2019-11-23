@@ -39,7 +39,7 @@ class Header extends React.Component {
                             <Dropdown >
                                 <Link to ="/about">
                                     <Button className="navButton" >About Us</Button>
-                                 </Link>
+                                </Link>
 
                                 <Dropdown.Toggle split id="dropdown-split-basic" />
 
