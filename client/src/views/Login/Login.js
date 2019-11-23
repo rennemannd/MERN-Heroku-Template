@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter, Redirect } from "react-router-dom";
-//We will need to install and import axios
+
 class Login extends Component {
     constructor(props) {
         //Necessary for class components
@@ -74,7 +74,6 @@ class Login extends Component {
     }
     
     render() {
-
         if (this.props.loggedIn)
             return <Redirect to={{ pathname: this.state.redirectTo }} />;
         return (

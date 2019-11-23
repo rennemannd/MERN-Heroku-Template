@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import { Navbar, Nav, Button, Dropdown, DropdownItem } from 'react-bootstrap';
+import { Navbar, Nav, Button, Dropdown} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import Logout from "../Logout/Logout";
 
@@ -12,7 +12,7 @@ class Header extends React.Component {
 
         //binding this TODO: Convert class components to hooks
         this.logout = this.logout.bind(this);
-                this.state = {
+        this.state = {
             verified: false
         };
     }
@@ -24,47 +24,7 @@ class Header extends React.Component {
     render() {
 
         return (
-            /*<nav className="navbar navbar-light bg-light navbar-expand-lg">
-                <Link to="/" exact className="navbar-brand">
-                    Authentication Presentation
-                </Link>
-                <div className="collapse navbar-collapse">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="navbar-item">
-                            <Link to="/" exact className="nav-link">
-                                Home
-                            </Link>
-                        </li>
-
-                        {!this.props.loggedIn ? (
-                            <>
-
-                                <li className="navbar-item">
-                                    <Link to="/users/login" className="nav-link">
-                                        Login
-                                    </Link>
-                                </li>
-                            </>
-                        ) : (
-                                <>
-                                    <li className="navbar-item">
-                                        <Link to="/dashboard" className="nav-link">
-                                            Dashboard
-                                        </Link>
-                                    </li>
-                                    <li className="navbar-item">
-                                        <Logout logout={this.logout} />
-                                    </li>
-                                </>
-                            )}
-                    </ul>
-                </div>
-            </nav>*/
-
-            
             <div className='topnav'>
-
-
                 <Navbar bg="light" expand="lg">
                     <Navbar.Brand href="/home">BioTork
                 </Navbar.Brand>
@@ -146,24 +106,18 @@ class Header extends React.Component {
                                     <Button className="navButton" href="/contact">Contact</Button>
                                 </Link>
                             </div>
-
                             {!this.props.loggedIn ? (
                                 <>
                                 </>
                             ) : (
-
                                 <div>
                                     <Logout logout={this.logout} />
                                 </div>
-
                                 )}
 
                         </Nav>
-
                     </Navbar.Collapse>
                 </Navbar>
-
-
             </div>
         )
     }

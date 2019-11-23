@@ -17,7 +17,7 @@ import Technology from "./views/Technology/Technology"
 import Press from "./views/Press/Press"
 import Publications from "./views/Publications/Publications"
 import Admin from "./views/Admin/Admin"
-import NotFound from "./views/NotFound"
+import NotFound from "./views/NotFound/NotFound"
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
 import './App.css';
@@ -47,7 +47,6 @@ class App extends React.Component {
                 this.setState({
                     loggedIn: true
                 });
-
                 //console.log(`Successfully logged in! ${JSON.stringify(response.data)}`);
             }
             cb(response.data);
@@ -58,7 +57,6 @@ class App extends React.Component {
         axios.get(route).then(response => {
             //on success res.data has: success, message, user.name, user.username, user.email, user.logggedIn
             if (!response.data.success) {
-
                 this.setState({
                     loggedIn: response.data.user.loggedIn
                 });
@@ -100,7 +98,6 @@ class App extends React.Component {
                         logout={this.logout}
                         loggedIn={this.state.loggedIn}
                         verify={this.verify}
-
                     />
                     <div className="content">
                         <Switch >
@@ -118,12 +115,12 @@ class App extends React.Component {
                             <Route
                                 exact path="/users/login" 
                                 render={() => (
-                                    <Login login={this.login} loggedIn={this.state.loggedIn} verify={this.verify} />
+                                    <Login verify={this.verify} login={this.login} loggedIn={this.state.loggedIn} />
                                 )}
                             />
                             <Route exact path="/users/register" 
                                 render={() => (
-                                    <Register loggedIn={this.state.loggedIn} verify={this.verify} />
+                                    <Register verify={this.verify} loggedIn={this.state.loggedIn} />
                                 )}
                             />
 

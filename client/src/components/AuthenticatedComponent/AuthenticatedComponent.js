@@ -1,5 +1,5 @@
 import React from "react";
-import NotFound from "../../views/NotFound"
+import NotFound from "../../views/NotFound/NotFound"
 
 import { withRouter, Route } from "react-router-dom";
 
@@ -17,8 +17,7 @@ class AuthenticatedComponent extends React.Component {
             this.setState({
                 verified: data.success
             });
-            //user is not authorized or their session expired
-            //move them to the login page to get a new session
+
             if (!data.success) {
                 console.log("Session ended: " + JSON.stringify(data));
                 //this.props.history.push("/users/login");

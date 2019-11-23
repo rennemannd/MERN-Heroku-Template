@@ -4,8 +4,6 @@ const Logout = props => {
     const onSubmit = event => {
         event.preventDefault();
         props.logout();
-        //axios post to users/login
-        //redirect to login
     };
     return (
         <div className="nav-item">
