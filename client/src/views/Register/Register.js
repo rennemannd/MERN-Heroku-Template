@@ -23,6 +23,19 @@ class Register extends Component {
         };
     }
 
+    componentDidMount() {
+        this.props.verify("/api/users/verify", data => {
+            //user is not authorized or their session expired
+            //move them to the login page to get a new session
+            if (!data.success) {
+                console.log("Session ended: " + JSON.stringify(data));
+                //this.props.history.push("/users/login");
+            } else {
+                console.log("Authenticated user data: " + JSON.stringify(data));
+            }
+        });
+    }
+
     onChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -69,16 +82,18 @@ class Register extends Component {
                 //redirect to login page
                 this.props.history.push("/users/login");
             } else {
-                console.log(` ${ JSON.stringify(response.data) }`);
+                //console.log(` ${ JSON.stringify(response.data) }`);
                 this.setState({
                     password: "",
                     password2: "",
                     isLoading: false,
                     registerErrors: response.data.message
                 });
-                console.log("hi");
-                console.log(JSON.stringify(this.state.registerErrors));
-                this.props.history.push("/users/register");
+                console.log(response.data)
+                console.log(JSON.stringify(this.state))
+                //console.log("hi");
+                //console.log(JSON.stringify(this.state.registerErrors));
+                //this.props.history.push("/users/register");
             }
             
         });
@@ -87,6 +102,7 @@ class Register extends Component {
 
     //Later try adding transparency for the forms?
     render() {
+        //console.log("hi", JSON.stringify(this.state.registerErrors));
         if (this.props.loggedIn)
             return <Redirect to={{ pathname: "/dashboard" }} />;
         if (this.state.isLoading) {

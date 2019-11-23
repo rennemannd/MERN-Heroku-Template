@@ -118,12 +118,12 @@ class App extends React.Component {
                             <Route
                                 exact path="/users/login" 
                                 render={() => (
-                                    <Login login={this.login} loggedIn={this.state.loggedIn} />
+                                    <Login login={this.login} loggedIn={this.state.loggedIn} verify={this.verify} />
                                 )}
                             />
                             <Route exact path="/users/register" 
                                 render={() => (
-                                    <Register loggedIn={this.state.loggedIn} />
+                                    <Register loggedIn={this.state.loggedIn} verify={this.verify} />
                                 )}
                             />
 

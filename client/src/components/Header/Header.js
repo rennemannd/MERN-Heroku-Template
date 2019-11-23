@@ -17,22 +17,6 @@ class Header extends React.Component {
         };
     }
 
-    componentDidMount() {
-        /*this.props.verify("/api/users/verify", data => {
-            this.setState({
-                verified: data.success
-            });
-            //user is not authorized or their session expired
-            //move them to the login page to get a new session
-            if (!data.success) {
-                console.log("Session ended: " + JSON.stringify(data));
-                //this.props.history.push("/users/login");
-            } else {
-                console.log("Authenticated user data: " + JSON.stringify(data));
-            }
-        });*/
-    }
-
     logout() {
         this.props.logout("/api/users/logout");
     };

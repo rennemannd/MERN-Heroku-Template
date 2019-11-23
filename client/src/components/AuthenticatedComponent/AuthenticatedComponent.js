@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import NotFound from "../../views/NotFound"
 
 import { withRouter, Route } from "react-router-dom";
@@ -31,7 +30,7 @@ class AuthenticatedComponent extends React.Component {
 
 
     render() {
-        if (!this.props.loggedIn) {
+        if (!this.state.verified) {
             return (
                 <Route component={NotFound} />
             );
