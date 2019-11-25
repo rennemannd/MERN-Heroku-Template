@@ -12,10 +12,6 @@ exports.getAll = function(req, res) {
           return a.displayed_date - b.displayed_date
         }));
       }
-
-      console.log(press.sort(function (a, b) {
-        return a.displayed_date - b.displayed_date
-      }));
     
     });
   
@@ -25,8 +21,6 @@ exports.createNew = function(req, res) {
     
     var pressrelease = new Press(req.body);
 
-    console.log(req);
-
     pressrelease.save(function(err) {
       if(err) {
         console.log(err);
@@ -35,5 +29,22 @@ exports.createNew = function(req, res) {
         res.json(pressrelease);
       }
     });
+
+};
+
+exports.updateExisting = function(req, res) {
+    
+  var pressrelease = req.body;
+
+  var ObjectID = require('mongodb').ObjectID;
+
+  Press.replaceOne({"_id": ObjectID(pressrelease._id)}, pressrelease, function(err) {
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      res.json(pressrelease);
+    }
+  });
 
 };
