@@ -27,12 +27,18 @@ class Press extends React.Component {
 			return (
                 <div className="press-release">
                     <tr key={press._id}>
+                        <div>
+                            <td>{press.title}</td>
+                        </div>
                         <img src={press.image} />
                         <div>
                             <td>{press.text}</td>
                         </div>
                         <div>
                             <td>{press.displayed_date}</td>
+                        </div>
+                        <div>
+                            <a href={press.doc_link}>Document Link</a>
                         </div>
                     </tr>
                 </div>

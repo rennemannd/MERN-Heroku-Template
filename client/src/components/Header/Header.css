@@ -239,6 +239,7 @@ p {
 
 .navbar {
     position: fixed;
+    z-index: 99;
     width: 100%;
     min-height: 60px;
 }
@@ -272,5 +273,3 @@ p {
     background-color: none !important;
     box-shadow: none !important;
 }
-
-

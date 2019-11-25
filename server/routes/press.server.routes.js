@@ -6,7 +6,7 @@ router.route('/')
   .get(press.getAll)
   .post(press.createNew)
 
-router.route('/u')
+router.route('/update')
   .post(press.updateExisting)
   
 module.exports = router;

@@ -1,23 +1,26 @@
 const path = require('path'),
     express = require('express'),
-    mongoose = require('mongoose'),
+
+    mongooseSetup = require("./database"),
+    session = require("express-session"),
+    MongoStore = require("connect-mongo")(session),
+    passport = require("passport"),
+    users = require("../routes/users"),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     pressRouter = require('../routes/press.server.routes');
 
 module.exports.init = () => {
-    /* 
-        connect to database
-        - reference README for db uri
-    */
-    mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
-        useNewUrlParser: true
-    });
-    mongoose.set('useCreateIndex', true);
-    mongoose.set('useFindAndModify', false);
+    //connect to database
+    mongooseSetup.start();
+
+    //config passport
+    require("./passport")(passport);
 
     // initialize app
     const app = express();
+    //app.set("trust proxy", true) //found on user-auth repo
+
 
     // enable request logging for development debugging
     app.use(morgan('dev'));
@@ -26,8 +29,32 @@ module.exports.init = () => {
     app.use(bodyParser.json({limit: '50mb', extended: true})),
     app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
-    // add a router
-    app.use('/api/press', pressRouter, function (res, req, next) {
+
+    //Express session middleware
+    app.use(
+        session({
+            name: "sid",
+            resave: false,
+            saveUninitialized: false,
+            secret: "secret",
+            store: new MongoStore({ mongooseConnection: mongooseSetup.connection }),
+            cookie: {
+                httpOnly: true,
+                secure: false,
+                maxAge: 1000 * 60 * 60 * 24 * 1 // 1 day
+            }
+        })
+    );
+
+
+    //passport middleware
+    app.use(passport.initialize());
+    app.use(passport.session());
+
+    // add routers
+    app.use("/api/users", users); //api for user authentication
+
+    app.use('/api/press', pressRouter, function (res, req, next) { //api for press releases
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         next();
