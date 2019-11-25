@@ -18,6 +18,7 @@ exports.getAll = function(req, res) {
 
 exports.createNew = function(req, res) {
 
+  if(req.isAuthrnticated){
     var pressrelease = new Press(req.body);
     pressrelease.save(function(err) {
       if(err) {
@@ -27,23 +28,29 @@ exports.createNew = function(req, res) {
         res.json(pressrelease);
       }
     });
+  } else {
+    res.status(403)
+  }
 
 };
 
 exports.updateExisting = function(req, res) {
-    
-  var pressrelease = req.body;
 
-  var ObjectID = require('mongodb').ObjectID;
+  if(req.isAuthrnticated){
+    var pressrelease = req.body;
 
-  Press.replaceOne({"_id": ObjectID(pressrelease._id)}, pressrelease, function(err) {
-    if(err) {
-      console.log(err);
-      res.status(400).send(err);
-    } else {
-      res.json(pressrelease);
-    }
-  });
+    var ObjectID = require('mongodb').ObjectID;
 
+    Press.replaceOne({"_id": ObjectID(pressrelease._id)}, pressrelease, function(err) {
+      if(err) {
+        console.log(err);
+        res.status(400).send(err);
+      } else {
+        res.json(pressrelease);
+      }
+    });
+  } else {
+    res.status(403)
+  }
 
 };

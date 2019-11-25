@@ -2,6 +2,7 @@ import React from 'react';
 import './Admin.css';
 
 import PressEdit from './editors/PressEdit'
+import Register from './Register/Register'
 
 class Admin extends React.Component {
     constructor(props) {
@@ -31,7 +32,7 @@ class Admin extends React.Component {
                                 <div class="divider"/>
                                 <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("about")}>About</button>
                                 <div class="divider"/>
-                                <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("about")}>Access Control</button>
+                                <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("register")}>Register Users</button>
                             </ul>
                         </div>
                     </nav>
@@ -49,6 +50,17 @@ class Admin extends React.Component {
                     </div>
                     <div>
                         <PressEdit/>
+                    </div>
+                </div>
+            );
+        } else if(currentView === "register") {
+            return(
+                <div class="row">
+                    <div>
+                        <this.SidebarView/>
+                    </div>
+                    <div>
+                        <Register/>
                     </div>
                 </div>
             );

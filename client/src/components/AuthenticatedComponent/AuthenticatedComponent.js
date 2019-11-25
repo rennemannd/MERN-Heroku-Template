@@ -1,7 +1,7 @@
 import React from "react";
 import NotFound from "../../views/NotFound/NotFound"
 
-import { withRouter, Route } from "react-router-dom";
+import { withRouter, Route, Redirect } from "react-router-dom";
 
 class AuthenticatedComponent extends React.Component {
     constructor(props) {

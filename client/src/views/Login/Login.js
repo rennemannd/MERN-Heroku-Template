@@ -47,7 +47,7 @@ class Login extends Component {
 
                 console.log(`Successfully logged in! ${JSON.stringify(data)}`);
 
-                this.props.history.push("/dashboard");
+                this.props.history.push("/admin");
             } else {
                 this.setState({
                     username: "",
