@@ -241,7 +241,7 @@ p {
     position: fixed;
     z-index: 99;
     width: 100%;
-    min-height: 60px;
+    min-height: 56px;
 }
 
      
@@ -256,20 +256,64 @@ p {
 
 .navButton {
     background: none;
-    color: rgba(0,0,0,0.5);
+    color: #a8a8a8;
     border: none;
 }
 
 .navButton:hover {
     border: none !important;
     background: none !important;
-    color: black !important;
+    color: whitesmoke !important;
 }
 
 .navButton:focus, .navButton:active {
     border: none !important;
     background: none !important;
-    color: black !important;
+    color: whitesmoke !important;
     background-color: none !important;
     box-shadow: none !important;
+}
+
+.bg-light {
+    background-color: rgba(16,16,16,1) !important;
+}
+
+.navbar-brand {
+    color: whitesmoke !important;
+    letter-spacing: 0.1rem;
+
+}
+.navbar-brand:hover {
+    color: whitesmoke !important;
+}
+.btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1.5rem;
+    letter-spacing: 0.05rem;
+}
+.dropdown-menu {
+    font-size: 0.8rem;
+    border-radius: 0px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+.mr-auto {
+    margin-left: auto !important;
+    margin-right: 2vw !important;
+}
+.dropdown-item:hover {
+    background-color: #fff;
+}
+.dropdown-item.active, .dropdown-item:active, .dropdown-item:focus {
+    color: black !important;
+    background-color: white !important;
+}
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+}
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='whitesmoke' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.navbar-light .navbar-toggler {
+    border: none;
 }
