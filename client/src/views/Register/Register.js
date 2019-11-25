@@ -23,16 +23,6 @@ class Register extends Component {
         };
     }
 
-    componentDidMount() {
-        this.props.verify("/api/users/verify", data => {
-            if (!data.success) {
-                console.log("Session ended: " + JSON.stringify(data));
-            } else {
-                console.log("Authenticated user data: " + JSON.stringify(data));
-            }
-        });
-    }
-
     onChange(event) {
         this.setState({
             [event.target.name]: event.target.value

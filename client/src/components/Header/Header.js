@@ -12,9 +12,7 @@ class Header extends React.Component {
 
         //binding this TODO: Convert class components to hooks
         this.logout = this.logout.bind(this);
-        this.state = {
-            verified: false
-        };
+
     }
 
     logout() {
@@ -113,7 +111,7 @@ class Header extends React.Component {
                                 <div>
                                     <Logout logout={this.logout} />
                                 </div>
-                                )}
+                            )}
 
                         </Nav>
                     </Navbar.Collapse>

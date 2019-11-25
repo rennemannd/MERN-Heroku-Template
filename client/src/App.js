@@ -35,8 +35,13 @@ class App extends React.Component {
             loggedIn: false,
             user: {}
         };
+        
     }
 
+    componentDidMount() {
+        this.verify("/api/users/verify", data => {
+        });
+    }
 
     login(route, user, cb) {
         console.log(user);
@@ -90,6 +95,7 @@ class App extends React.Component {
 
     render() {
 
+
         console.log("logged in", this.state.loggedIn);
         return (
             <div>
@@ -97,7 +103,6 @@ class App extends React.Component {
                     <Header
                         logout={this.logout}
                         loggedIn={this.state.loggedIn}
-                        verify={this.verify}
                     />
                     <div className="content">
                         <Switch >
@@ -115,25 +120,27 @@ class App extends React.Component {
                             <Route
                                 exact path="/users/login" 
                                 render={() => (
-                                    <Login verify={this.verify} login={this.login} loggedIn={this.state.loggedIn} />
+                                    <Login login={this.login} loggedIn={this.state.loggedIn} />
                                 )}
                             />
                             <Route exact path="/users/register" 
                                 render={() => (
-                                    <Register verify={this.verify} loggedIn={this.state.loggedIn} />
+                                    <Register loggedIn={this.state.loggedIn} />
                                 )}
                             />
 
                             <AuthenticatedComponent verify={this.verify} loggedIn={this.state.loggedIn}>
-                                <Route
-                                    exact path="/dashboard"
-                                    render={() => (
-                                        <Dashboard
-                                            user={this.state.user}
-                                        />
-                                    )}
-                                />
-                                <Route component={NotFound} />
+                                <Switch >
+                                    <Route
+                                        exact path="/dashboard"
+                                        render={() => (
+                                            <Dashboard
+                                                user={this.state.user}
+                                            />
+                                        )}
+                                    />
+                                    <Route component={NotFound} />
+                                </Switch>
                             </AuthenticatedComponent>
                         </Switch>
                         <div className="bottom">

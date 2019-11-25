@@ -21,19 +21,6 @@ class Login extends Component {
         };
     }
 
-    componentDidMount() {
-        this.props.verify("/api/users/verify", data => {
-            //user is not authorized or their session expired
-            //move them to the login page to get a new session
-            if (!data.success) {
-                console.log("Session ended: " + JSON.stringify(data));
-                //this.props.history.push("/users/login");
-            } else {
-                console.log("Authenticated user data: " + JSON.stringify(data));
-            }
-        });
-    }
-
     onChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -76,6 +63,13 @@ class Login extends Component {
     render() {
         if (this.props.loggedIn)
             return <Redirect to={{ pathname: this.state.redirectTo }} />;
+        if (this.state.isLoading) {
+            return (
+                <div>
+                    <p>Loading...</p>
+                </div>
+            );
+        }
         return (
             <div className="login-view-container">
                 <div className="login-container">
