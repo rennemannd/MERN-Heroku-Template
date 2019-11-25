@@ -18,8 +18,6 @@ exports.getAll = function(req, res) {
 
 exports.createNew = function(req, res) {
 
-  if (req.isAuthenticated()) {
-
     var pressrelease = new Press(req.body);
     pressrelease.save(function(err) {
       if(err) {
