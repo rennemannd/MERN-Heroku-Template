@@ -9,12 +9,8 @@ class PressEdit extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-<<<<<<< HEAD
           pressText: 'Enter content here.',
           pressTitle: 'Enter a title here.',
-=======
-          pressText: 'Content of Press Release',
->>>>>>> 39c8c46274e5fd36309e8141f9b331aaf961127c
           pressImage: '',
           pressDoc: '',
           pressDate: new Date(),
