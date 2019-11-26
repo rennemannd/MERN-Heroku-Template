@@ -36,7 +36,7 @@ exports.createNew = function(req, res) {
 
 exports.updateExisting = function(req, res) {
 
-  if(req.isAuthrnticated){
+  if(req.isAuthenticated){
     var pressrelease = req.body;
 
     var ObjectID = require('mongodb').ObjectID;
