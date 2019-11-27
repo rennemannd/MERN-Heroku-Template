@@ -84,9 +84,6 @@ class Register extends Component {
     }
 
     render() {
-        //console.log("hi", JSON.stringify(this.state.registerErrors));
-        if (this.props.loggedIn)
-            return <Redirect to={{ pathname: "/dashboard" }} />;
         if (this.state.isLoading) {
             return (
                 <div>

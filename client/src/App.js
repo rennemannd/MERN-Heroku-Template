@@ -116,7 +116,6 @@ class App extends React.Component {
                             <Route exact path="/contact" component={Contact} />
                             <Route exact path="/press" component={Press} />
                             <Route exact path="/publications" component={Publications} />
-                            <Route exact path="/admin" component={Admin} />
                             <Route
                                 exact path="/users/login" 
                                 render={() => (
@@ -138,6 +137,10 @@ class App extends React.Component {
                                                 user={this.state.user}
                                             />
                                         )}
+                                    />
+                                    <Route
+                                        exact path="/admin"
+                                        component={Admin}
                                     />
                                     <Route component={NotFound} />
                                 </Switch>
