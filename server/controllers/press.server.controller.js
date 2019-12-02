@@ -54,3 +54,24 @@ exports.updateExisting = function(req, res) {
   }
 
 };
+
+exports.deleteEntry = function(req, res) {
+
+  if(req.isAuthenticated){
+    var pressrelease = req.body;
+
+    var ObjectID = require('mongodb').ObjectID;
+
+    Press.deleteOne({"_id": ObjectID(pressrelease._id)}, pressrelease, function(err) {
+      if(err) {
+        console.log(err);
+        res.status(400).send(err);
+      } else {
+        res.json(pressrelease);
+      }
+    });
+  } else {
+    res.status(403)
+  }
+
+};

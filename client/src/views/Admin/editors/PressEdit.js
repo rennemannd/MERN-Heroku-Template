@@ -17,13 +17,16 @@ class PressEdit extends React.Component {
           pressReleases: [],
 
           pressID: {},
-          isEditing: false
+          isEditing: false,
+          editButton: "Post",
+          clearButton: "Clear"
         };
     
         this.handlePressTextChange = this.handlePressTextChange.bind(this);
         this.handlePressTitleChange = this.handlePressTitleChange.bind(this);
         this.handlePressImageChange = this.handlePressImageChange.bind(this);
         this.handlePressDocChange = this.handlePressDocChange.bind(this);
+        this.handleClear = this.handleClear.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
       }
@@ -144,8 +147,38 @@ class PressEdit extends React.Component {
           pressDate: Date.parse(press.displayed_date),
 
           pressID: press._id,
-          isEditing: true
+          isEditing: true,
+          editButton: "Update",
+          clearButton: "Delete"
         });
+      }
+
+      handleClear(event){
+
+        if(this.state.isEditing){
+          fetch('/api/press/delete', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                _id: this.state.pressID
+            })
+        })
+        } else {
+          this.setState({
+            pressText: 'Enter content here.',
+            pressTitle: 'Enter a title here.',
+            pressImage: '',
+            pressDoc: '',
+            pressDate: new Date(),
+            pressReleases: [],
+  
+            isEditing: false
+          });
+        }
+
       }
     
       render() {
@@ -195,7 +228,8 @@ class PressEdit extends React.Component {
                         <textarea class="form-control" rows="1" value={this.state.pressDoc} onChange={this.handlePressDocChange}></textarea>
                     </div>
                     <div class="press-postbutton">
-                        <button type="submit" value="Submit" class="btn btn-primary">Post/Update</button>
+                        <button type="submit" value="Submit" class="btn btn-primary">{this.state.editButton}</button>
+                        <button type="button" variant="danger" class="btn btn-danger" onClick={this.handleClear}>{this.state.clearButton}</button>
                     </div>
 
               </form>

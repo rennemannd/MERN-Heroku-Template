@@ -37,8 +37,7 @@
     position: relative;
     display: flexbox;
     width: auto;
-    padding-bottom: 20px;
-    padding-left: 20px;
+    padding: 20px;
 }
 .press-uploadedimage {
     position: relative;
