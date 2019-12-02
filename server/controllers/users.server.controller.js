@@ -4,7 +4,7 @@ const User = require('../models/user.model.js')
 exports.create = function (req, res) {
     if (req.isAuthenticated()) {
 
-        const { name, email, password } = req.body;
+        const { name, email, password, password2 } = req.body;
 
         //ensures email isn't case sensitive
         let { username } = req.body;
@@ -15,8 +15,12 @@ exports.create = function (req, res) {
         let errors = [];
 
         //Check required fields
-        if (!name || !email || !password || !username) {
+        if (!name || !email || !password || !password2 || !username) {
             errors.push({ msg: "Please fill in all fields" });
+        }
+
+        if (password !== password2) {
+            errors.push({ msg: "Passwords do not match" });
         }
 
         if (password.length < 6) {
@@ -71,38 +75,55 @@ exports.create = function (req, res) {
     } else {
         return res.send({
             success: false,
-            message: "unauthorized create"
+            message: "unauthorized register"
         });
     }
 }
 
 //read
-exports.getOne = function (req, res) {
-    let { username } = req.body;
-    username = username.toLowerCase();
-
+exports.get = function (req, res) {
     if (req.isAuthenticated()) {
-        User.find({ username: username }, function (error, user) {
-            if (error) {
-                console.log(error);
-                res.status(400).send(error);
-            }
-            else {
-                return res.send({
-                    user: JSON.stringify(user),
-                    success: true,
-                    message: "Succcessful registration!"
-                });
-            }
-        });
 
-
-    } else {
+        if (req.body.username) {
+            username = req.body.username.toLowerCase();
+            User.findOne({ username: username }, function (error, user) {
+                if (error) {
+                    console.log(error);
+                    res.status(400).send(error);
+                }
+                else {
+                    return res.send({
+                        user: JSON.stringify(user),
+                        success: true,
+                        message: "Succcessful getOne!"
+                    });
+                }
+            });
+        }
+        else {
+            User.find({}, function (error, users) {
+                if (error) {
+                    console.log(error);
+                    res.status(400).send(error);
+                }
+                else {
+                    return res.send({
+                        users: JSON.stringify(users),
+                        success: true,
+                        message: "Succcessful getAll!"
+                    });
+                }
+            }).sort('name');
+        }
+    }
+    else {
         return res.send({
             success: false,
-            message: "unauthorized getOne"
+            message: "unauthorized get"
         });
     }
+
+    
 }
 
 
@@ -137,19 +158,22 @@ exports.getAll = function (req, res) {
 exports.update = function (req, res) {
     if (req.isAuthenticated()) {
 
-        const { name, email, password } = req.body;
+        const { name, email, password, password2 } = req.body;
 
         //ensures email isn't case sensitive
         let { username } = req.body;
-        username = username.toLowerCase();
 
         //Do server-side form validation here: password length
         //is the email an actual email etc.
         let errors = [];
 
         //Check required fields
-        if (!name || !email || !password || !username) {
+        if (!name || !email || !password || !password2 || !username) {
             errors.push({ msg: "Please fill in all fields" });
+        }
+
+        if (password !== password2) {
+            errors.push({ msg: "Passwords do not match" });
         }
 
         if (password.length < 6) {
@@ -222,29 +246,29 @@ exports.delete = function (req, res) {
        
         //Validation passed
         User.findOneAndRemove({ username: username })
-            .then((user) => {
+        .then((user) => {
 
 
-                if (user) {
-                    return res.send({
-                        success: true,
-                        message: "delete successful"
-                    });
-                } else {
-                    return res.send({
-                        success: false,
-                        message: "cannot find user"
-                    });
-                }
-            }).catch((error) => {
-                if (error) {
-                    errors.push("Server error: deleting user from database");
-                    return res.send({
-                        success: false,
-                        message: errors
-                    });
-                }
-            })
+            if (user) {
+                return res.send({
+                    success: true,
+                    message: "delete successful"
+                });
+            } else {
+                return res.send({
+                    success: false,
+                    message: "cannot find user"
+                });
+            }
+        }).catch((error) => {
+            if (error) {
+                errors.push("Server error: deleting user from database");
+                return res.send({
+                    success: false,
+                    message: errors
+                });
+            }
+        })
 
     } else {
         return res.send({

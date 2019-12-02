@@ -5,6 +5,9 @@ const router = express.Router();
 //User model
 const User = require("../models/user.model");
 
+//User controller
+const Users = require('../controllers/users.server.controller.js');
+
 //Verify - this is for the frontend
 router.get("/verify", (req, res) => {
 
@@ -146,5 +149,11 @@ router.post("/logout", (req, res) => {
         });
     });
 });
+
+router.route('/')
+    .get(Users.get)
+    .post(Users.create)
+    .put(Users.update)
+    .delete(Users.delete);
 
 module.exports = router;
