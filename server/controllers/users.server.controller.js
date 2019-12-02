@@ -92,11 +92,19 @@ exports.get = function (req, res) {
                     res.status(400).send(error);
                 }
                 else {
-                    return res.send({
-                        user: JSON.stringify(user),
-                        success: true,
-                        message: "Succcessful getOne!"
-                    });
+                    if (user) {
+                        return res.send({
+                            user: user,
+                            success: true,
+                            message: "Succcessful getOne!"
+                        });
+                    }
+                    else {
+                        return res.send({
+                            success: false,
+                            message: "Cannot find username!"
+                        });
+                    }
                 }
             });
         }
@@ -108,7 +116,7 @@ exports.get = function (req, res) {
                 }
                 else {
                     return res.send({
-                        users: JSON.stringify(users),
+                        users: users,
                         success: true,
                         message: "Succcessful getAll!"
                     });

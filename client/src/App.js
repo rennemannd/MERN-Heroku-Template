@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import history from "./history";
 
+
 import Login from "./views/Login/Login";  
 import Dashboard from "./views/Dashboard/Dashboard";  
 import AuthenticatedComponent from "./components/AuthenticatedComponent/AuthenticatedComponent";
@@ -43,7 +44,6 @@ class App extends React.Component {
     }
 
     login(route, user, cb) {
-        console.log(user);
         //in production a .catch(err => console.log(err)) should be implemented
         axios.post(route, user).then(response => {
             //set own state and execute the callback
@@ -119,11 +119,6 @@ class App extends React.Component {
                                 exact path="/users/login" 
                                 render={() => (
                                     <Login login={this.login} loggedIn={this.state.loggedIn} />
-                                )}
-                            />
-                            <Route exact path="/users/register" 
-                                render={() => (
-                                    <Register loggedIn={this.state.loggedIn} />
                                 )}
                             />
 
