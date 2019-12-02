@@ -2,6 +2,7 @@ import React from 'react';
 import './Admin.css';
 
 import PressEdit from './editors/PressEdit'
+import ProjectEdit from './editors/ProjectEdit'
 import Register from './Register/Register'
 
 class Admin extends React.Component {
@@ -13,10 +14,12 @@ class Admin extends React.Component {
         this.setCurrentView = this.setCurrentView.bind(this);
     }
 
+    //Function to change the currentView.
     setCurrentView = (newView) => {
         this.setState({currentView: newView});
     }
     
+    //Sidebar render.
     SidebarView = () => {
         return (
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -39,6 +42,7 @@ class Admin extends React.Component {
         );
     }
 
+    //Conditionally render based on the currentView, this changes the view based on the sidebar buttons.
     render() {
         const currentView = this.state.currentView;
 
@@ -61,6 +65,17 @@ class Admin extends React.Component {
                     </div>
                     <div>
                         <Register/>
+                    </div>
+                </div>
+            );
+        } else if(currentView === "projects") {
+            return(
+                <div class="row">
+                    <div>
+                        <this.SidebarView/>
+                    </div>
+                    <div>
+                        <ProjectEdit/>
                     </div>
                 </div>
             );

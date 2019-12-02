@@ -38,14 +38,17 @@ class PressEdit extends React.Component {
         });
       }
     
+      //Changes the pressText variable onChange.
       handlePressTextChange(event) {
         this.setState({pressText: event.target.value});
       }
 
+      //Changes the pressTitle onChange.
       handlePressTitleChange(event) {
         this.setState({pressTitle: event.target.value});
       }
 
+      //Handles image upload.
       handlePressImageChange(event) {
         var self = this;
         var reader = new FileReader();
@@ -58,10 +61,12 @@ class PressEdit extends React.Component {
         }, false);
       }
 
+      //Handles optional document URL (pressDoc) onChange.
       handlePressDocChange(event) {
         this.setState({pressDoc: event.target.value});
       }
 
+      //Handles changes to the displayed date.
       handlePressDateChange = date => {
         this.setState({
           pressDate: date
@@ -72,6 +77,7 @@ class PressEdit extends React.Component {
       handleSubmit(event) {
         event.preventDefault();
 
+        //If a post is being edited, use update API instead of create.
         if(this.state.isEditing){
           fetch('/api/press/update', {
             method: 'POST',
@@ -91,6 +97,7 @@ class PressEdit extends React.Component {
                 created_date: this.state.created_date
             })
         })
+        //Else if a new post is being created, use the create API.
         } else {
           fetch('/api/press', {
             method: 'POST',
@@ -112,7 +119,7 @@ class PressEdit extends React.Component {
         }
 
         
-
+        //Reset the state after press release is created/updated.
         this.setState({
           pressText: 'Enter content here.',
           pressTitle: 'Enter a title here.',
@@ -127,6 +134,7 @@ class PressEdit extends React.Component {
 
       }
 
+      //Handles selecting an existing press release to edit.
       handleSelect(press) {
         this.setState({
           pressText: press.text,
@@ -142,8 +150,9 @@ class PressEdit extends React.Component {
     
       render() {
 
+        //Sort existing press releases by date, render, and store in pressList.
         const pressList = this.state.pressReleases.sort(function (a, b) {
-          return b.displayed_date - a.displayed_date  //Sort with most recent date first.
+          return Date.parse(b.displayed_date) - Date.parse(a.displayed_date)  //Sort with most recent date first.
         }).map(press => {
           return (
                     <div className="previous-releases">
