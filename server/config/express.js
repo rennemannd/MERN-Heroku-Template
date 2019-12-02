@@ -36,7 +36,7 @@ module.exports.init = () => {
             name: "sid",
             resave: false,
             saveUninitialized: false,
-            secret: "secret",
+            secret: "secretStuff",
             store: new MongoStore({ mongooseConnection: mongooseSetup.connection }),
             cookie: {
                 httpOnly: true,

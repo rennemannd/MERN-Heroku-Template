@@ -45,6 +45,7 @@ class App extends React.Component {
 
     login(route, user, cb) {
         //in production a .catch(err => console.log(err)) should be implemented
+
         axios.post(route, user).then(response => {
             //set own state and execute the callback
             if (response.data.success) {
