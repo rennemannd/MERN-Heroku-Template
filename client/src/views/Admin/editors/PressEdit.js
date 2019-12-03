@@ -1,4 +1,5 @@
 import React from 'react';
+import { Modal, Button } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './Editor.css';
@@ -18,6 +19,7 @@ class PressEdit extends React.Component {
 
           pressID: {},
           isEditing: false,
+          isClearing: false,
           editButton: "Post",
           clearButton: "Clear"
         };
@@ -29,6 +31,7 @@ class PressEdit extends React.Component {
         this.handleClear = this.handleClear.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
+        this.setClearing = this.setClearing.bind(this);
       }
       
       //Retreive existing Press Releases from API.
@@ -69,6 +72,10 @@ class PressEdit extends React.Component {
         this.setState({pressDoc: event.target.value});
       }
 
+      setClearing(value) {
+        this.setState({isClearing: value});
+      }
+
       //Handles changes to the displayed date.
       handlePressDateChange = date => {
         this.setState({
@@ -99,7 +106,7 @@ class PressEdit extends React.Component {
                 changed_date: Date.now(),
                 created_date: this.state.created_date
             })
-        })
+          });
         //Else if a new post is being created, use the create API.
         } else {
           fetch('/api/press', {
@@ -118,7 +125,7 @@ class PressEdit extends React.Component {
                 changed_date: Date.now(),
                 created_date: Date.now()
             })
-        })
+          })
         }
 
         
@@ -180,6 +187,59 @@ class PressEdit extends React.Component {
         }
 
       }
+
+      clearConfirmDialog(props) {
+        if(this.state.isEditing){
+          return (
+            <Modal
+              {...props}
+              size="lg"
+              aria-labelledby="contained-modal-title-vcenter"
+              centered
+            >
+              <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                  Are you sure you want to delete this post?
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <p>
+                  Pressing Delete will delete the post "{this.state.pressTitle}" , are you sure you want to do this?
+                </p>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button onClick={this.handleClear} variant="danger" >Delete</Button>
+                <Button onClick={props.onHide}>Cancel</Button>
+              </Modal.Footer>
+            </Modal>
+          );
+        } else {
+          return (
+            <Modal
+              {...props}
+              size="lg"
+              aria-labelledby="contained-modal-title-vcenter"
+              centered
+            >
+              <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                  Are you sure you want to clear?
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <p>
+                  Pressing Clear will clear all fields, are you sure you want to do this?
+                </p>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button onClick={this.handleClear} variant="danger" >Clear</Button>
+                <Button onClick={props.onHide}>Cancel</Button>
+              </Modal.Footer>
+            </Modal>
+          );
+        }
+      }
+      
     
       render() {
 
@@ -198,6 +258,8 @@ class PressEdit extends React.Component {
                     </div>
           );
         });
+
+        
 
         return (
           <div class="editor">
@@ -230,11 +292,17 @@ class PressEdit extends React.Component {
                     </div>
                     <div class="-postbutton editor-element">
                         <button type="submit" value="Submit" class="btn btn-primary">{this.state.editButton}</button>
-                        <button type="button" variant="danger" class="btn btn-danger" onClick={this.handleClear}>{this.state.clearButton}</button>
+                        <button type="button" variant="danger" class="btn btn-danger" onClick={() => this.setClearing(true)}>{this.state.clearButton}</button>
                     </div>
-
               </form>
+
+              <this.clearConfirmDialog
+                show={this.state.isClearing}
+                onHide={() => this.setClearing(false)}
+              />
+
             </div>
+
             <div class="rightcolumn">
               <label>Published Releases: </label>
               <div class="previous-list">{pressList}</div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Modal, Button } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './Editor.css';
@@ -18,6 +19,7 @@ class ProjectEdit extends React.Component {
 
           projectID: {},
           isEditing: false,
+          isClearing: false,
           editButton: "Post",
           clearButton: "Clear"
         };
@@ -29,6 +31,9 @@ class ProjectEdit extends React.Component {
         this.handleClear = this.handleClear.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
+        this.setClearing = this.setClearing.bind(this);
+        this.clearConfirmDialog = this.clearConfirmDialog.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
       }
       
       //Retreive existing Projects from API.
@@ -69,6 +74,10 @@ class ProjectEdit extends React.Component {
         this.setState({projectDoc: event.target.value});
       }
 
+      setClearing(value) {
+        this.setState({isClearing: value});
+      }
+
       //Handles changes to the displayed date.
       handleProjectDateChange = date => {
         this.setState({
@@ -76,7 +85,7 @@ class ProjectEdit extends React.Component {
         });
       };
     
-      //Send new Project to API.
+      //Send new Projects to API.
       handleSubmit(event) {
         event.preventDefault();
 
@@ -99,7 +108,7 @@ class ProjectEdit extends React.Component {
                 changed_date: Date.now(),
                 created_date: this.state.created_date
             })
-        })
+          });
         //Else if a new post is being created, use the create API.
         } else {
           fetch('/api/project', {
@@ -118,11 +127,11 @@ class ProjectEdit extends React.Component {
                 changed_date: Date.now(),
                 created_date: Date.now()
             })
-        })
+          });
         }
 
         
-        //Reset the state after project is created/updated.
+        //Reset the state after projects is created/updated.
         this.setState({
           projectText: 'Enter content here.',
           projectTitle: 'Enter a title here.',
@@ -134,10 +143,12 @@ class ProjectEdit extends React.Component {
           isEditing: false
         });
 
+        
+
 
       }
 
-      //Handles selecting an existing project to edit.
+      //Handles selecting an existing projects to edit.
       handleSelect(project) {
         this.setState({
           projectText: project.text,
@@ -180,10 +191,63 @@ class ProjectEdit extends React.Component {
         }
 
       }
+
+      clearConfirmDialog(props) {
+        if(this.state.isEditing){
+          return (
+            <Modal
+              {...props}
+              size="lg"
+              aria-labelledby="contained-modal-title-vcenter"
+              centered
+            >
+              <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                  Are you sure you want to delete this post?
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <p>
+                  Projecting Delete will delete the post "{this.state.projectTitle}" , are you sure you want to do this?
+                </p>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button onClick={this.handleClear} variant="danger" >Delete</Button>
+                <Button onClick={props.onHide}>Cancel</Button>
+              </Modal.Footer>
+            </Modal>
+          );
+        } else {
+          return (
+            <Modal
+              {...props}
+              size="lg"
+              aria-labelledby="contained-modal-title-vcenter"
+              centered
+            >
+              <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                  Are you sure you want to clear?
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <p>
+                  Projecting Clear will clear all fields, are you sure you want to do this?
+                </p>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button onClick={this.handleClear} variant="danger" >Clear</Button>
+                <Button onClick={props.onHide}>Cancel</Button>
+              </Modal.Footer>
+            </Modal>
+          );
+        }
+      }
+      
     
       render() {
 
-        //Sort existing projects by date, render, and store in projectList.
+        //Sort existing projectss by date, render, and store in projectList.
         const projectList = this.state.projectReleases.sort(function (a, b) {
           return Date.parse(b.displayed_date) - Date.parse(a.displayed_date)  //Sort with most recent date first.
         }).map(project => {
@@ -198,6 +262,8 @@ class ProjectEdit extends React.Component {
                     </div>
           );
         });
+
+        
 
         return (
           <div class="editor">
@@ -230,11 +296,17 @@ class ProjectEdit extends React.Component {
                     </div>
                     <div class="-postbutton editor-element">
                         <button type="submit" value="Submit" class="btn btn-primary">{this.state.editButton}</button>
-                        <button type="button" variant="danger" class="btn btn-danger" onClick={this.handleClear}>{this.state.clearButton}</button>
+                        <button type="button" variant="danger" class="btn btn-danger" onClick={() => this.setClearing(true)}>{this.state.clearButton}</button>
                     </div>
-
               </form>
+
+              <this.clearConfirmDialog
+                show={this.state.isClearing}
+                onHide={() => this.setClearing(false)}
+              />
+
             </div>
+
             <div class="rightcolumn">
               <label>Published Projects: </label>
               <div class="previous-list">{projectList}</div>
