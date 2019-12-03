@@ -22,7 +22,6 @@ class Admin extends React.Component {
     //Sidebar render.
     SidebarView = () => {
         return (
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                         <div class="sidebar-sticky">
                             <ul class="nav flex-column">
                                 <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("general")}>General</button>
@@ -31,14 +30,9 @@ class Admin extends React.Component {
                                 <div class="divider"/>
                                 <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("press")}>Press Releases</button>
                                 <div class="divider"/>
-                                <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("tech")}>Technology</button>
-                                <div class="divider"/>
-                                <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("about")}>About</button>
-                                <div class="divider"/>
                                 <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("register")}>Register Users</button>
                             </ul>
                         </div>
-                    </nav>
         );
     }
 
@@ -49,32 +43,32 @@ class Admin extends React.Component {
         if(currentView === "press") {
             return(
                 <div class="row">
-                    <div>
-                        <this.SidebarView/>
-                    </div>
-                    <div>
-                        <PressEdit/>
-                    </div>
+                        <div class="sidebar-viewport">
+                            <this.SidebarView/>
+                        </div>
+                        <div class="editor-viewport"> 
+                            <PressEdit/>
+                        </div>
                 </div>
             );
         } else if(currentView === "register") {
             return(
                 <div class="row">
-                    <div>
-                        <this.SidebarView/>
-                    </div>
-                    <div>
-                        <Register/>
-                    </div>
+                        <div class="sidebar-viewport">
+                            <this.SidebarView/>
+                        </div>
+                        <div class="editor-viewport"> 
+                            <Register/>
+                        </div>
                 </div>
             );
         } else if(currentView === "projects") {
             return(
                 <div class="row">
-                        <div>
+                        <div class="sidebar-viewport">
                             <this.SidebarView/>
                         </div>
-                        <div>
+                        <div class="editor-viewport"> 
                             <ProjectEdit/>
                         </div>
                 </div>
@@ -83,12 +77,12 @@ class Admin extends React.Component {
         else {
             return(
                 <div class="row">
-                    <div>
-                        <this.SidebarView/>
-                    </div>
-                    <div>
+                        <div class="sidebar-viewport">
+                            <this.SidebarView/>
+                        </div>
+                        <div class="editor-viewport"> 
                         <p>Error: Undefined View</p>
-                    </div>
+                        </div>
                 </div>
             );
         }

@@ -193,6 +193,7 @@ class ProjectEdit extends React.Component {
                             <div className="previous-release">
                               <td value={project} onClick={() => this.handleSelect(project)}>{project.title} Last Changed: {project.changed_date}</td>
                             </div>
+                            <div class="previous-divider"/>
                         </tr>
                     </div>
           );
@@ -236,7 +237,7 @@ class ProjectEdit extends React.Component {
             </div>
             <div class="rightcolumn">
               <label>Published Projects: </label>
-              <div class="-list">{projectList}</div>
+              <div class="previous-list">{projectList}</div>
             </div>
           </div>
         );

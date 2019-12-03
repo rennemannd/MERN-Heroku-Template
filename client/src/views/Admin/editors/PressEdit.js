@@ -193,6 +193,7 @@ class PressEdit extends React.Component {
                             <div className="previous-release">
                               <td value={press} onClick={() => this.handleSelect(press)}>{press.title} Last Changed: {press.changed_date}</td>
                             </div>
+                            <div class="previous-divider"/>
                         </tr>
                     </div>
           );
@@ -236,7 +237,7 @@ class PressEdit extends React.Component {
             </div>
             <div class="rightcolumn">
               <label>Published Releases: </label>
-              <div class="-list">{pressList}</div>
+              <div class="previous-list">{pressList}</div>
             </div>
           </div>
         );
