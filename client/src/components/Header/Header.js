@@ -91,26 +91,33 @@ class Header extends React.Component {
                             </Dropdown>
                             <div>
                                 <Link to="/publications">
-                                    <Button className="navButton" href="/publications">Publications</Button>
+                                    <Button className="navButton" >Publications</Button>
                                 </Link>
                             </div>
                             <div>
                                 <Link to="/press">
-                                    <Button className="navButton" href="/press">Press Releases</Button>
+                                    <Button className="navButton" >Press Releases</Button>
                                 </Link>
                             </div>
                             <div>
                                 <Link to="/contact">
-                                    <Button className="navButton" href="/contact">Contact</Button>
+                                    <Button className="navButton" >Contact</Button>
                                 </Link>
                             </div>
                             {!this.props.loggedIn ? (
                                 <>
                                 </>
                             ) : (
+                                <>
+                                <div>
+                                    <Link to="/admin">
+                                        <Button className="navButton" >Admin</Button>
+                                    </Link>
+                                </div>
                                 <div>
                                     <Logout logout={this.logout} />
                                 </div>
+                                </>
                             )}
 
                         </Nav>

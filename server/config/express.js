@@ -5,7 +5,7 @@ const path = require('path'),
     session = require("express-session"),
     MongoStore = require("connect-mongo")(session),
     passport = require("passport"),
-    users = require("../routes/users"),
+    users = require("../routes/users.server.routes"),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     pressRouter = require('../routes/press.server.routes');
@@ -37,7 +37,7 @@ module.exports.init = () => {
             name: "sid",
             resave: false,
             saveUninitialized: false,
-            secret: "secret",
+            secret: process.env.SECRET || require('./config').secret,
             store: new MongoStore({ mongooseConnection: mongooseSetup.connection }),
             cookie: {
                 httpOnly: true,

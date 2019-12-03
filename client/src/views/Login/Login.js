@@ -15,7 +15,7 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
-            redirectTo: "/dashboard",
+            redirectTo: "/admin",
             loginError: "",
             isLoading: false
         };
@@ -45,7 +45,7 @@ class Login extends Component {
                     isLoading: false
                 });
 
-                console.log(`Successfully logged in! ${JSON.stringify(data)}`);
+                console.log(`Successfully logged in!`);
 
                 this.props.history.push("/admin");
             } else {
