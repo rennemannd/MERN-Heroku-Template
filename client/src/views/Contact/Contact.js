@@ -24,12 +24,11 @@ class Contact extends React.Component {
 
     render() {
         return (
-            
 
-            <div className="contact">
-            <p>Contact Me</p>
-            
-            <div>
+        <div className="contact">
+        <p>Contact Me</p>
+         <div>
+
   <label>First Name</label>
   <input type="text" id="fname" name="firstname" placeholder="Your name.."
     value={this.state.fname}
@@ -71,7 +70,17 @@ class Contact extends React.Component {
    
     handleFormSubmit( event ) {
         event.preventDefault();
-        console.log(this.state);
+        console.log(this.state.fname);
+        console.log(this.state.lname);
+        console.log(this.state.email);
+        console.log(this.state.message);
+        fetch('/api/press', {
+            method: 'POST',
+            body: JSON.stringify({
+                targetmail: this.state.email
+            })
+          })
+
       }
 
 }
