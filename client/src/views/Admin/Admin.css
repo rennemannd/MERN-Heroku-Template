@@ -1,10 +1,17 @@
 .sidebar-sticky {
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    width: 150px;
     height: auto;
-    padding-top: 20px;
-    padding-left: 20px;
+    width: auto;
+    padding: 20px;
+    background: white;
+}
+
+.sidebar-viewport {
+    width: 15%;
+    background: white;
+}
+
+.editor-viewport {
+    width: 85%;
 }
 
 .divider{

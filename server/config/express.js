@@ -9,6 +9,7 @@ const path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     pressRouter = require('../routes/press.server.routes');
+    projectRouter = require('../routes/project.server.routes');
 
 module.exports.init = () => {
     //connect to database
@@ -55,6 +56,12 @@ module.exports.init = () => {
     app.use("/api/users", users); //api for user authentication
 
     app.use('/api/press', pressRouter, function (res, req, next) { //api for press releases
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
+
+    app.use('/api/project', projectRouter, function (res, req, next) { //api for press releases
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         next();

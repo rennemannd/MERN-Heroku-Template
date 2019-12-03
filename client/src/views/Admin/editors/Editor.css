@@ -1,61 +1,45 @@
-.editior {
-    position: relative;
-    display: flexbox;
-    padding-top: 20px;
-    padding-left: 20px;
-}
 .leftcolumn {
     float: left;
-}
-.rightcolumn {
-    float: right;
-    padding-left: 40px;
+    width: 50%;
 }
 
-.press-datepicker {
+.rightcolumn {
+    float: right;
+    padding: 10px;
+    width: 50%;
+}
+
+.editor-element {
     position: relative;
     display: flexbox;
     width: auto;
-    padding-bottom: 20px;
-    padding-left: 20px;
+    padding: 10px;
 }
-.press-fileupload {
-    position: relative;
-    display: flexbox;
-    width: auto;
-    padding-bottom: 20px;
-    padding-left: 20px;
-}
-.press-textarea {
-    position: relative;
-    display: flexbox;
-    width: auto;
-    padding-bottom: 20px;
-    padding-left: 20px;
-}
-.press-postbutton {
-    position: relative;
-    display: flexbox;
-    width: auto;
-    padding-bottom: 20px;
-    padding-left: 20px;
-}
-.press-uploadedimage {
+
+.uploadedimage {
     position: relative;
     width: auto;
     height: 150px;
-    padding-bottom: 20px;
+}
+
+.previous-list {
+    padding-bottom: 2px;
+}
+
+.previous-divider {
+    height: 10px;
 }
 
 .previous-release {
     display: inline-block;
+    width: 100%;
     font-weight: 400;
-    color: #212529;
+    color: #FFFFFF;
     text-align: center;
     vertical-align: middle;
     -webkit-user-select: none;
     user-select: none;
-    background-color: transparent;
+    background-color: #007bff;
     border: 1px solid transparent;
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -66,13 +50,14 @@
 
 .previous-release:hover {
     display: inline-block;
+    width: 100%;
     font-weight: 400;
     color: #FFFFFF;
     text-align: center;
     vertical-align: middle;
     -webkit-user-select: none;
     user-select: none;
-    background-color:#007bff;
+    background-color:#0062cc;
     border: 1px solid transparent;
     padding: .375rem .75rem;
     font-size: 1rem;

@@ -8,6 +8,7 @@ class Press extends React.Component {
         this.state = { pressReleases: [] };
     }
 
+    //Get Press Releases from API as an array.
     componentDidMount() {
         fetch(PRESS_API)
         .then(response => response.json())
@@ -21,8 +22,9 @@ class Press extends React.Component {
 
         const { pressReleases } = this.state;
 
+        //Sort Press Releases by date, render each press release object, store in pressList variable.
         const pressList = pressReleases.sort(function (a, b) {
-            return parseInt(b.displayed_date) - parseInt(a.displayed_date)  //Sort with most recent date first.
+            return parseInt(Date.parse(b.displayed_date)) - parseInt(Date.parse(a.displayed_date))  //Sort with most recent date first.
           }).map(press => {
 			return (
                 <div className="press-release">
@@ -30,7 +32,7 @@ class Press extends React.Component {
                         <div>
                             <td>{press.title}</td>
                         </div>
-                        <img src={press.image} />
+                        <img alt="" src={press.image} />
                         <div>
                             <td>{press.text}</td>
                         </div>
@@ -45,6 +47,7 @@ class Press extends React.Component {
 			);
 		});
 
+        //Return pressList variable of rendered press releases.
         return (
             <div>{pressList}</div> 
         );

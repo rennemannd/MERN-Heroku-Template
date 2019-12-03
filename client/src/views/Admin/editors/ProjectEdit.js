@@ -4,30 +4,30 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './Editor.css';
 
-const PRESS_API = '/api/press';
-class PressEdit extends React.Component {
+const PROJECT_API = '/api/project';
+class ProjectEdit extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-          pressText: 'Enter content here.',
-          pressTitle: 'Enter a title here.',
-          pressImage: '',
-          pressDoc: '',
-          pressDate: new Date(),
-          pressReleases: [],
+          projectText: 'Enter content here.',
+          projectTitle: 'Enter a title here.',
+          projectImage: '',
+          projectDoc: '',
+          projectDate: new Date(),
+          projectReleases: [],
 
-          pressID: {},
+          projectID: {},
           isEditing: false,
           isClearing: false,
           editButton: "Post",
           clearButton: "Clear"
         };
     
-        this.handlePressTextChange = this.handlePressTextChange.bind(this);
-        this.handlePressTitleChange = this.handlePressTitleChange.bind(this);
-        this.handlePressImageChange = this.handlePressImageChange.bind(this);
-        this.handlePressDocChange = this.handlePressDocChange.bind(this);
+        this.handleProjectTextChange = this.handleProjectTextChange.bind(this);
+        this.handleProjectTitleChange = this.handleProjectTitleChange.bind(this);
+        this.handleProjectImageChange = this.handleProjectImageChange.bind(this);
+        this.handleProjectDocChange = this.handleProjectDocChange.bind(this);
         this.handleClear = this.handleClear.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
@@ -35,28 +35,28 @@ class PressEdit extends React.Component {
         this.clearConfirmDialog = this.clearConfirmDialog.bind(this);
       }
       
-      //Retreive existing Press Releases from API.
+      //Retreive existing Projects from API.
       componentDidMount() {
-        fetch(PRESS_API)
+        fetch(PROJECT_API)
         .then(response => response.json())
-        .then(response => this.setState({ pressReleases: response }))
+        .then(response => this.setState({ projectReleases: response }))
         .catch(err => {
-            console.log("Error fetching Press Releases:" + err);
+            console.log("Error fetching Projects:" + err);
         });
       }
     
-      //Changes the pressText variable onChange.
-      handlePressTextChange(event) {
-        this.setState({pressText: event.target.value});
+      //Changes the projectText variable onChange.
+      handleProjectTextChange(event) {
+        this.setState({projectText: event.target.value});
       }
 
-      //Changes the pressTitle onChange.
-      handlePressTitleChange(event) {
-        this.setState({pressTitle: event.target.value});
+      //Changes the projectTitle onChange.
+      handleProjectTitleChange(event) {
+        this.setState({projectTitle: event.target.value});
       }
 
       //Handles image upload.
-      handlePressImageChange(event) {
+      handleProjectImageChange(event) {
         var self = this;
         var reader = new FileReader();
         var file = event.target.files[0];
@@ -64,13 +64,13 @@ class PressEdit extends React.Component {
         reader.readAsDataURL(file);
 
         reader.addEventListener("load", function () {
-            self.setState({pressImage: reader.result});
+            self.setState({projectImage: reader.result});
         }, false);
       }
 
-      //Handles optional document URL (pressDoc) onChange.
-      handlePressDocChange(event) {
-        this.setState({pressDoc: event.target.value});
+      //Handles optional document URL (projectDoc) onChange.
+      handleProjectDocChange(event) {
+        this.setState({projectDoc: event.target.value});
       }
 
       setClearing(value) {
@@ -78,83 +78,85 @@ class PressEdit extends React.Component {
       }
 
       //Handles changes to the displayed date.
-      handlePressDateChange = date => {
+      handleProjectDateChange = date => {
         this.setState({
-          pressDate: date
+          projectDate: date
         });
       };
     
-      //Send new Press Release to API.
+      //Send new Projects to API.
       handleSubmit(event) {
         event.preventDefault();
 
         //If a post is being edited, use update API instead of create.
         if(this.state.isEditing){
-          fetch('/api/press/update', {
+          fetch('/api/project/update', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                _id: this.state.pressID,
-                text: this.state.pressText,
-                image: this.state.pressImage,
-                title: this.state.pressTitle,
-                doc_link: this.state.pressDoc,
+                _id: this.state.projectID,
+                text: this.state.projectText,
+                image: this.state.projectImage,
+                title: this.state.projectTitle,
+                doc_link: this.state.projectDoc,
 
-                displayed_date: this.state.pressDate,
+                displayed_date: this.state.projectDate,
                 changed_date: Date.now(),
                 created_date: this.state.created_date
             })
           });
         //Else if a new post is being created, use the create API.
         } else {
-          fetch('/api/press', {
+          fetch('/api/project', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                title: this.state.pressTitle,
-                text: this.state.pressText,
-                image: this.state.pressImage,
-                doc_link: this.state.pressDoc,
+                title: this.state.projectTitle,
+                text: this.state.projectText,
+                image: this.state.projectImage,
+                doc_link: this.state.projectDoc,
 
-                displayed_date: this.state.pressDate,
+                displayed_date: this.state.projectDate,
                 changed_date: Date.now(),
                 created_date: Date.now()
             })
-          })
+          });
         }
 
         
-        //Reset the state after press release is created/updated.
+        //Reset the state after projects is created/updated.
         this.setState({
-          pressText: 'Enter content here.',
-          pressTitle: 'Enter a title here.',
-          pressImage: '',
-          pressDoc: '',
-          pressDate: new Date(),
-          pressReleases: [],
+          projectText: 'Enter content here.',
+          projectTitle: 'Enter a title here.',
+          projectImage: '',
+          projectDoc: '',
+          projectDate: new Date(),
+          projectReleases: [],
 
           isEditing: false
         });
 
+        
+
 
       }
 
-      //Handles selecting an existing press release to edit.
-      handleSelect(press) {
+      //Handles selecting an existing projects to edit.
+      handleSelect(project) {
         this.setState({
-          pressText: press.text,
-          pressTitle: press.title,
-          pressDoc: press.doc_link,
-          pressImage: press.image,
-          pressDate: Date.parse(press.displayed_date),
+          projectText: project.text,
+          projectTitle: project.title,
+          projectDoc: project.doc_link,
+          projectImage: project.image,
+          projectDate: Date.parse(project.displayed_date),
 
-          pressID: press._id,
+          projectID: project._id,
           isEditing: true,
           editButton: "Update",
           clearButton: "Delete"
@@ -165,23 +167,23 @@ class PressEdit extends React.Component {
       handleClear(event){
 
         if(this.state.isEditing){
-          fetch('/api/press/delete', {
+          fetch('/api/project/delete', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                _id: this.state.pressID
+                _id: this.state.projectID
             })
         })
         } else {
           this.setState({
-            pressText: 'Enter content here.',
-            pressTitle: 'Enter a title here.',
-            pressImage: '',
-            pressDoc: '',
-            pressDate: new Date(),
+            projectText: 'Enter content here.',
+            projectTitle: 'Enter a title here.',
+            projectImage: '',
+            projectDoc: '',
+            projectDate: new Date(),
   
             isEditing: false
           });
@@ -207,7 +209,7 @@ class PressEdit extends React.Component {
               </Modal.Header>
               <Modal.Body>
                 <p>
-                  Pressing Delete will delete the post "{this.state.pressTitle}" , are you sure you want to do this?
+                  Pressing Delete will delete the post "{this.state.projectTitle}" , are you sure you want to do this?
                 </p>
               </Modal.Body>
               <Modal.Footer>
@@ -231,7 +233,7 @@ class PressEdit extends React.Component {
               </Modal.Header>
               <Modal.Body>
                 <p>
-                  Pressing Clear will clear all fields, are you sure you want to do this?
+                  Projecting Clear will clear all fields, are you sure you want to do this?
                 </p>
               </Modal.Body>
               <Modal.Footer>
@@ -246,15 +248,15 @@ class PressEdit extends React.Component {
     
       render() {
 
-        //Sort existing press releases by date, render, and store in pressList.
-        const pressList = this.state.pressReleases.sort(function (a, b) {
+        //Sort existing projectss by date, render, and store in projectList.
+        const projectList = this.state.projectReleases.sort(function (a, b) {
           return Date.parse(b.displayed_date) - Date.parse(a.displayed_date)  //Sort with most recent date first.
-        }).map(press => {
+        }).map(project => {
           return (
                     <div className="previous-releases">
-                        <tr key={press._id}>
+                        <tr key={project._id}>
                             <div className="previous-release">
-                              <td value={press} onClick={() => this.handleSelect(press)}>{press.title} Last Changed: {press.changed_date}</td>
+                              <td value={project} onClick={() => this.handleSelect(project)}>{project.title} Last Changed: {project.changed_date}</td>
                             </div>
                             <div class="previous-divider"/>
                         </tr>
@@ -270,28 +272,28 @@ class PressEdit extends React.Component {
               <form onSubmit={this.handleSubmit}>
 
                     <div class="-datepicker editor-element">
-                        <label>Date displayed on Press Release: </label>
+                        <label>Date displayed on Project: </label>
                         <DatePicker
-                            selected={this.state.pressDate}
-                            onChange={this.handlePressDateChange}
+                            selected={this.state.projectDate}
+                            onChange={this.handleProjectDateChange}
                         />
                     </div>
                     <div class="-imageupload editor-element">
                         <div><label>Image to Upload: </label></div>
-                        <img class="-uploadedimage" alt="" src={this.state.pressImage} />
-                        <input type="file" class="form-control-file" onChange={this.handlePressImageChange}></input>
+                        <img class="-uploadedimage" alt="" src={this.state.projectImage} />
+                        <input type="file" class="form-control-file" onChange={this.handleProjectImageChange}></input>
                     </div>
                     <div class="-titlearea editor-element">
-                        <label>Press Release Title: </label>
-                        <textarea class="form-control" rows="1" value={this.state.pressTitle} onChange={this.handlePressTitleChange}></textarea>
+                        <label>Project Title: </label>
+                        <textarea class="form-control" rows="1" value={this.state.projectTitle} onChange={this.handleProjectTitleChange}></textarea>
                     </div>
                     <div class="-textarea editor-element">
-                        <label>Press Release Content: </label>
-                        <textarea class="form-control" rows="8" value={this.state.pressText} onChange={this.handlePressTextChange}></textarea>
+                        <label>Project Content: </label>
+                        <textarea class="form-control" rows="8" value={this.state.projectText} onChange={this.handleProjectTextChange}></textarea>
                     </div>
                     <div class="-doclink editor-element">
                         <label>Link to document (optional): </label>
-                        <textarea class="form-control" rows="1" value={this.state.pressDoc} onChange={this.handlePressDocChange}></textarea>
+                        <textarea class="form-control" rows="1" value={this.state.projectDoc} onChange={this.handleProjectDocChange}></textarea>
                     </div>
                     <div class="-postbutton editor-element">
                         <button type="submit" value="Submit" class="btn btn-primary">{this.state.editButton}</button>
@@ -307,12 +309,12 @@ class PressEdit extends React.Component {
             </div>
 
             <div class="rightcolumn">
-              <label>Published Releases: </label>
-              <div class="previous-list">{pressList}</div>
+              <label>Published Projects: </label>
+              <div class="previous-list">{projectList}</div>
             </div>
           </div>
         );
       }
 }
-export default PressEdit;
+export default ProjectEdit;
 

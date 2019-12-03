@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+}
+ .App {
+     max-width: 420px;
+     margin: 0 auto;
+}
+ p {
+     text-align: center;
+     font-weight: 500;
+}
+ input[type=text],input[type=email], select, textarea {
+     width: 100%;
+     padding: 12px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     box-sizing: border-box;
+     margin-top: 6px;
+     margin-bottom: 16px;
+     resize: vertical;
+}
+ input[type=submit] {
+     background-color: #212529;
+     color: white;
+     padding: 12px 188px;
+     border: none;
+     border-radius: 200px;
+     cursor: pointer;
+     align-content: center;
+}
+  .container {
+     border-radius: 5px;
+     background-color: #f2f2f2;
+     padding: 20px;
+}
