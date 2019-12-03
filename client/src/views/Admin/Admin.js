@@ -71,12 +71,12 @@ class Admin extends React.Component {
         } else if(currentView === "projects") {
             return(
                 <div class="row">
-                    <div>
-                        <this.SidebarView/>
-                    </div>
-                    <div>
-                        <ProjectEdit/>
-                    </div>
+                        <div>
+                            <this.SidebarView/>
+                        </div>
+                        <div>
+                            <ProjectEdit/>
+                        </div>
                 </div>
             );
         }

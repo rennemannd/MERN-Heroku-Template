@@ -1,7 +1,7 @@
 import React from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import './ProjectEdit.css';
+import './Editor.css';
 
 const PROJECT_API = '/api/project';
 class ProjectEdit extends React.Component {
@@ -14,16 +14,19 @@ class ProjectEdit extends React.Component {
           projectImage: '',
           projectDoc: '',
           projectDate: new Date(),
-          projects: [],
+          projectReleases: [],
 
           projectID: {},
-          isEditing: false
+          isEditing: false,
+          editButton: "Post",
+          clearButton: "Clear"
         };
     
         this.handleProjectTextChange = this.handleProjectTextChange.bind(this);
         this.handleProjectTitleChange = this.handleProjectTitleChange.bind(this);
         this.handleProjectImageChange = this.handleProjectImageChange.bind(this);
         this.handleProjectDocChange = this.handleProjectDocChange.bind(this);
+        this.handleClear = this.handleClear.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
       }
@@ -32,7 +35,7 @@ class ProjectEdit extends React.Component {
       componentDidMount() {
         fetch(PROJECT_API)
         .then(response => response.json())
-        .then(response => this.setState({ projects: response }))
+        .then(response => this.setState({ projectReleases: response }))
         .catch(err => {
             console.log("Error fetching Projects:" + err);
         });
@@ -119,14 +122,14 @@ class ProjectEdit extends React.Component {
         }
 
         
-        //Reset the state after project release is created/updated.
+        //Reset the state after project is created/updated.
         this.setState({
           projectText: 'Enter content here.',
           projectTitle: 'Enter a title here.',
           projectImage: '',
           projectDoc: '',
           projectDate: new Date(),
-          projects: [],
+          projectReleases: [],
 
           isEditing: false
         });
@@ -134,7 +137,7 @@ class ProjectEdit extends React.Component {
 
       }
 
-      //Handles selecting an existing project release to edit.
+      //Handles selecting an existing project to edit.
       handleSelect(project) {
         this.setState({
           projectText: project.text,
@@ -144,14 +147,44 @@ class ProjectEdit extends React.Component {
           projectDate: Date.parse(project.displayed_date),
 
           projectID: project._id,
-          isEditing: true
+          isEditing: true,
+          editButton: "Update",
+          clearButton: "Delete"
         });
+      }
+
+      //Function for clear button, either resets state, or deletes a post.
+      handleClear(event){
+
+        if(this.state.isEditing){
+          fetch('/api/project/delete', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                _id: this.state.projectID
+            })
+        })
+        } else {
+          this.setState({
+            projectText: 'Enter content here.',
+            projectTitle: 'Enter a title here.',
+            projectImage: '',
+            projectDoc: '',
+            projectDate: new Date(),
+  
+            isEditing: false
+          });
+        }
+
       }
     
       render() {
 
-        //Sort existing project releases by date, render, and store in projectList.
-        const projectList = this.state.projects.sort(function (a, b) {
+        //Sort existing projects by date, render, and store in projectList.
+        const projectList = this.state.projectReleases.sort(function (a, b) {
           return Date.parse(b.displayed_date) - Date.parse(a.displayed_date)  //Sort with most recent date first.
         }).map(project => {
           return (
@@ -166,43 +199,44 @@ class ProjectEdit extends React.Component {
         });
 
         return (
-          <div class="editior">
+          <div class="editor">
             <div class="leftcolumn">
               <form onSubmit={this.handleSubmit}>
 
-                    <div class="project-datepicker">
+                    <div class="-datepicker editor-element">
                         <label>Date displayed on Project: </label>
                         <DatePicker
                             selected={this.state.projectDate}
                             onChange={this.handleProjectDateChange}
                         />
                     </div>
-                    <div class="project-imageupload">
+                    <div class="-imageupload editor-element">
                         <div><label>Image to Upload: </label></div>
-                        <img class="project-uploadedimage" src={this.state.projectImage} />
+                        <img class="-uploadedimage" src={this.state.projectImage} />
                         <input type="file" class="form-control-file" onChange={this.handleProjectImageChange}></input>
                     </div>
-                    <div class="project-titlearea">
+                    <div class="-titlearea editor-element">
                         <label>Project Title: </label>
                         <textarea class="form-control" rows="1" value={this.state.projectTitle} onChange={this.handleProjectTitleChange}></textarea>
                     </div>
-                    <div class="project-textarea">
+                    <div class="-textarea editor-element">
                         <label>Project Content: </label>
                         <textarea class="form-control" rows="8" value={this.state.projectText} onChange={this.handleProjectTextChange}></textarea>
                     </div>
-                    <div class="project-doclink">
+                    <div class="-doclink editor-element">
                         <label>Link to document (optional): </label>
                         <textarea class="form-control" rows="1" value={this.state.projectDoc} onChange={this.handleProjectDocChange}></textarea>
                     </div>
-                    <div class="project-postbutton">
-                        <button type="submit" value="Submit" class="btn btn-primary">Post/Update</button>
+                    <div class="-postbutton editor-element">
+                        <button type="submit" value="Submit" class="btn btn-primary">{this.state.editButton}</button>
+                        <button type="button" variant="danger" class="btn btn-danger" onClick={this.handleClear}>{this.state.clearButton}</button>
                     </div>
 
               </form>
             </div>
             <div class="rightcolumn">
               <label>Published Projects: </label>
-              {projectList}
+              <div class="-list">{projectList}</div>
             </div>
           </div>
         );

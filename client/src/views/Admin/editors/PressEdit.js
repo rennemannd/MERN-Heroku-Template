@@ -1,7 +1,7 @@
 import React from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import './PressEdit.css';
+import './Editor.css';
 
 const PRESS_API = '/api/press';
 class PressEdit extends React.Component {
@@ -153,6 +153,7 @@ class PressEdit extends React.Component {
         });
       }
 
+      //Function for clear button, either resets state, or deletes a post.
       handleClear(event){
 
         if(this.state.isEditing){
@@ -173,7 +174,6 @@ class PressEdit extends React.Component {
             pressImage: '',
             pressDoc: '',
             pressDate: new Date(),
-            pressReleases: [],
   
             isEditing: false
           });
@@ -199,35 +199,35 @@ class PressEdit extends React.Component {
         });
 
         return (
-          <div class="editior">
+          <div class="editor">
             <div class="leftcolumn">
               <form onSubmit={this.handleSubmit}>
 
-                    <div class="press-datepicker">
+                    <div class="-datepicker editor-element">
                         <label>Date displayed on Press Release: </label>
                         <DatePicker
                             selected={this.state.pressDate}
                             onChange={this.handlePressDateChange}
                         />
                     </div>
-                    <div class="press-imageupload">
+                    <div class="-imageupload editor-element">
                         <div><label>Image to Upload: </label></div>
-                        <img class="press-uploadedimage" src={this.state.pressImage} />
+                        <img class="-uploadedimage" src={this.state.pressImage} />
                         <input type="file" class="form-control-file" onChange={this.handlePressImageChange}></input>
                     </div>
-                    <div class="press-titlearea">
+                    <div class="-titlearea editor-element">
                         <label>Press Release Title: </label>
                         <textarea class="form-control" rows="1" value={this.state.pressTitle} onChange={this.handlePressTitleChange}></textarea>
                     </div>
-                    <div class="press-textarea">
+                    <div class="-textarea editor-element">
                         <label>Press Release Content: </label>
                         <textarea class="form-control" rows="8" value={this.state.pressText} onChange={this.handlePressTextChange}></textarea>
                     </div>
-                    <div class="press-doclink">
+                    <div class="-doclink editor-element">
                         <label>Link to document (optional): </label>
                         <textarea class="form-control" rows="1" value={this.state.pressDoc} onChange={this.handlePressDocChange}></textarea>
                     </div>
-                    <div class="press-postbutton">
+                    <div class="-postbutton editor-element">
                         <button type="submit" value="Submit" class="btn btn-primary">{this.state.editButton}</button>
                         <button type="button" variant="danger" class="btn btn-danger" onClick={this.handleClear}>{this.state.clearButton}</button>
                     </div>
@@ -236,7 +236,7 @@ class PressEdit extends React.Component {
             </div>
             <div class="rightcolumn">
               <label>Published Releases: </label>
-              {pressList}
+              <div class="-list">{pressList}</div>
             </div>
           </div>
         );
