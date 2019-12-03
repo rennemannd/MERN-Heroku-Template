@@ -33,7 +33,6 @@ class ProjectEdit extends React.Component {
         this.handleSelect = this.handleSelect.bind(this);
         this.setClearing = this.setClearing.bind(this);
         this.clearConfirmDialog = this.clearConfirmDialog.bind(this);
-        this.componentDidMount = this.componentDidMount.bind(this);
       }
       
       //Retreive existing Projects from API.

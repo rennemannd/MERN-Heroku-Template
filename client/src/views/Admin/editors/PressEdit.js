@@ -32,6 +32,7 @@ class PressEdit extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
         this.setClearing = this.setClearing.bind(this);
+        this.clearConfirmDialog = this.clearConfirmDialog.bind(this);
       }
       
       //Retreive existing Press Releases from API.
