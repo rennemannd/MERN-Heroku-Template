@@ -54,3 +54,25 @@ exports.updateExisting = function(req, res) {
   }
 
 };
+
+
+exports.deleteEntry = function(req, res) {
+
+  if(req.isAuthenticated){
+    var project = req.body;
+
+    var ObjectID = require('mongodb').ObjectID;
+
+    Project.deleteOne({"_id": ObjectID(project._id)}, project, function(err) {
+      if(err) {
+        console.log(err);
+        res.status(400).send(err);
+      } else {
+        res.json(project);
+      }
+    });
+  } else {
+    res.status(403)
+  }
+
+};

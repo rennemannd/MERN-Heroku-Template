@@ -8,5 +8,8 @@ router.route('/')
 
 router.route('/update')
   .post(project.updateExisting)
+
+router.route('/delete')
+  .post(project.deleteEntry)
   
 module.exports = router;
