@@ -28,22 +28,24 @@ class Project extends React.Component {
           }).map(project => {
 
             return (
-                <div className="project-release">
-                    <tr key={project._id}>
-                        <div>
-                            <td>{project.title}</td>
-                        </div>
-                        <img alt="" src={project.image} />
-                        <div>
-                            <td>{project.text}</td>
-                        </div>
-                        <div>
-                            <td>{project.displayed_date}</td>
-                        </div>
-                        <div>
-                            <a href={project.doc_link}>Document Link</a>
-                        </div>
-                    </tr>
+                <div className="grid-containerP">
+                    <div className="project-item">
+                        <tr key={project._id}>
+                            <div className="project-title">
+                                <td><h2>{project.title}</h2></td>
+                            </div>
+                            <div className="project-info">
+                            <img alt="" src={project.image} />
+                                <td>{project.text}</td>
+                            </div>
+                            <div>
+                                <td>{project.displayed_date}</td>
+                            </div>
+                            <div>
+                                <a href={project.doc_link}>Document Link</a>
+                            </div>
+                        </tr>
+                    </div>
                 </div>
             );
         });
