@@ -35,6 +35,7 @@ class App extends React.Component {
             loggedIn: false,
             user: {}
         };
+
         
     }
 
@@ -42,6 +43,10 @@ class App extends React.Component {
         this.verify("/api/users/verify", data => {
         });
     }
+
+
+    
+
 
     login(route, user, cb) {
         //in production a .catch(err => console.log(err)) should be implemented
@@ -55,11 +60,15 @@ class App extends React.Component {
                 //console.log(`Successfully logged in! ${JSON.stringify(response.data)}`);
             }
             cb(response.data);
+        }).catch((error) => {
+            console.log(error);
+            cb(false);
         });
     }
 
     verify(route, cb) {
         axios.get(route).then(response => {
+
             //on success res.data has: success, message, user.name, user.username, user.email, user.logggedIn
             if (!response.data.success) {
                 this.setState({

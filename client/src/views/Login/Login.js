@@ -49,7 +49,6 @@ class Login extends Component {
 
                 this.props.history.push("/admin");
             } else {
-                console.log("got here");
                 this.setState({
                     username: "",
                     password: "",
@@ -64,13 +63,13 @@ class Login extends Component {
     render() {
         if (this.props.loggedIn)
             return <Redirect to={{ pathname: this.state.redirectTo }} />;
-        if (this.state.isLoading) {
+        /*if (this.state.isLoading) {
             return (
                 <div>
                     <p>Loading...</p>
                 </div>
             );
-        }
+        }*/
         return (
             <div className="login-view-container">
                 <div className="login-container">
