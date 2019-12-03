@@ -4,7 +4,6 @@ import axios from 'axios';
 
 import history from "./history";
 
-import Register from "./views/Register/Register"; 
 import Login from "./views/Login/Login";  
 import Dashboard from "./views/Dashboard/Dashboard";  
 import AuthenticatedComponent from "./components/AuthenticatedComponent/AuthenticatedComponent";
@@ -120,11 +119,6 @@ class App extends React.Component {
                                 exact path="/users/login" 
                                 render={() => (
                                     <Login login={this.login} loggedIn={this.state.loggedIn} />
-                                )}
-                            />
-                            <Route exact path="/users/register" 
-                                render={() => (
-                                    <Register loggedIn={this.state.loggedIn} />
                                 )}
                             />
 

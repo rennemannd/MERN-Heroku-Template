@@ -14,7 +14,7 @@ function Home() {
       </AwesomeSlider>
     );
     return (
-        <div className="grid-container">
+        <div className="grid-containerH">
             <div className="gitem">
                 {slider}
             </div>

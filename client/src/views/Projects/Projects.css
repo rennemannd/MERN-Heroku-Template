@@ -1,0 +1,93 @@
+.grid-containerP {
+	display: grid;
+	grid-auto-rows: minmax(2vw, auto);
+	grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 0.5fr;
+}
+.gridItem1 {
+	grid-column: 2/4;
+	grid-row: 2;
+	display: flex;
+	margin: 0.5vw 5vw;
+	align-content: center;
+	justify-content: center;
+	border-bottom-style: solid;
+	border-width: 1.5px;
+	border-color: darkgray;
+}
+.gridItem1list {
+	grid-column: 2/4;
+	grid-row: 3;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	list-style: none;
+}
+.gridItem2 {
+	grid-column: 4/6;
+	grid-row: 2;
+	display: flex;
+	margin: 0.5vw 5vw;
+	align-content: center;
+	justify-content: center;
+	border-bottom-style: solid;
+	border-width: 1.5px;
+	border-color: darkgray;
+}
+.gridItem2list {
+	grid-column: 4/6;
+	grid-row: 3;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	list-style: none;
+}
+.gridItem3 {
+	grid-column: 2/4;
+	grid-row: 5;
+	display: flex;
+	margin: 0.5vw 5vw;
+	align-content: center;
+	justify-content: center;
+	border-bottom-style: solid;
+	border-width: 1.5px;
+	border-color: darkgray;
+}
+.gridItem3list {
+	grid-column: 2/4;
+	grid-row: 6;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	list-style: none;
+}
+.gridItem4 {
+	grid-column: 4/6;
+	grid-row: 5;
+	display: flex;
+	margin: 0.5vw 5vw;
+	align-content: center;
+	justify-content: center;
+	border-bottom-style: solid;
+	border-width: 1.5px;
+	border-color: darkgray;
+}
+.gridItem4list {
+	grid-column: 4/6;
+	grid-row: 6;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	list-style: none;
+}
+.list {
+	font-size: 1.5rem;
+	color: gray;
+	padding:0.25vw;
+	list-style: none;
+}
+.list > li {
+	padding: 0.5vw;
+}
+.projecthead {
+	font-size: 3rem;
+}
