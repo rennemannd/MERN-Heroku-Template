@@ -136,32 +136,6 @@ exports.get = function (req, res) {
 
 
 
-exports.getAll = function (req, res) {
-    if (req.isAuthenticated()) {
-        User.find({}, function (error, users) {
-            if (error) {
-                console.log(error);
-                res.status(400).send(error);
-            }
-            else {
-                return res.send({
-                    users: JSON.stringify(users),
-                    success: true,
-                    message: "Succcessful registration!"
-                });
-            }
-        }).sort('name');
-        
-
-    } else {
-        return res.send({
-            success: false,
-            message: "unauthorized getAll"
-        });
-    }
-}
-
-
 //update
 exports.update = function (req, res) {
     if (req.isAuthenticated()) {
@@ -176,16 +150,20 @@ exports.update = function (req, res) {
         let errors = [];
 
         //Check required fields
-        if (!name || !email || !password || !password2 || !username) {
-            errors.push({ msg: "Please fill in all fields" });
-        }
+        if (password) {
+            if (password2) {
+                if (password !== password2) {
+                    errors.push({ msg: "Passwords do not match" });
+                }
 
-        if (password !== password2) {
-            errors.push({ msg: "Passwords do not match" });
-        }
 
-        if (password.length < 6) {
-            errors.push({ msg: "Password should be at least 6 characters" });
+                if (password.length < 6) {
+                    errors.push({ msg: "Password should be at least 6 characters" });
+                }
+            }
+            else {
+                errors.push({ msg: "need password2 to verify" });
+            }
         }
 
         if (errors.length > 0) {
@@ -199,9 +177,15 @@ exports.update = function (req, res) {
         User.findOne({ username: username }).then(user => {
             if (user) {
 
-                user.password = user.generateHash(password);
-                user.name = name;
-                user.email = email;
+                if (password) {
+                    user.password = user.generateHash(password);
+                }
+                if (name) {
+                    user.name = name;
+                }
+                if (email) {
+                    user.email = email;
+                }
                 user.save((error) => {
                     if (error) {
                         errors.push("Server error: updating user to database");
