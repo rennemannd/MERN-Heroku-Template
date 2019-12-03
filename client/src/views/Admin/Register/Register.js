@@ -61,13 +61,13 @@ class Register extends Component {
                     email: "",
                     password: "",
                     password2: "",
-                    registerErrors: [],
+                    registerErrors: [{msg: "Successfully registered"}],
                     isLoading: false
                 });
 
                 console.log(`Finished! ${JSON.stringify(response.data)}`);
-                //redirect to login page
-                this.props.history.push("/users/login");
+                //do not need to redirect to login page
+                //this.props.history.push("/users/login");
             } else {
                 this.setState({
                     password: "",

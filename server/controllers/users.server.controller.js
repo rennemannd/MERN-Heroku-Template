@@ -1,6 +1,7 @@
 const User = require('../models/user.model.js')
 
-//create
+//CRUD for admin user profiles, has to be authorized user in order to make these requests
+//creates or registeres new user
 exports.create = function (req, res) {
     if (req.isAuthenticated()) {
 
@@ -80,7 +81,7 @@ exports.create = function (req, res) {
     }
 }
 
-//read
+//gets all users if no username in body or specific user
 exports.get = function (req, res) {
     if (req.isAuthenticated()) {
 
@@ -136,7 +137,7 @@ exports.get = function (req, res) {
 
 
 
-//update
+//updates specific user
 exports.update = function (req, res) {
     if (req.isAuthenticated()) {
 
@@ -224,11 +225,11 @@ exports.update = function (req, res) {
 }
 
 
-//delete
+//deletes user
 exports.delete = function (req, res) {
     if (req.isAuthenticated()) {
 
-        
+        //first checks if last user, if so, do not delete
         User.countDocuments({}).limit(2).then((count) => {
             console.log("Number of users:", count);
             if (count == 1) {
@@ -239,6 +240,7 @@ exports.delete = function (req, res) {
             }
             else {
 
+                //proceeds to try and delete
 
                 //ensures email isn't case sensitive
                 let { username } = req.body;
