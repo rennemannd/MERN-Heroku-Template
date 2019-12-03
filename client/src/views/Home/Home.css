@@ -1,4 +1,4 @@
-.grid-container{
+.grid-containerH {
     display: grid;
     grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
     grid-auto-rows: minmax(5vw, auto);
@@ -20,6 +20,7 @@
 }
 .awssld {
     height: 45vw;
+    --loader-bar-color: #fff;
     --organic-arrow-color: #fff;
     --control-bullet-color: #fff;
     --control-bullet-active-color: #fff;
@@ -41,7 +42,7 @@
     opacity: 0.75;
 }
 .awssld__content {
-    background-color: #404040;
+    background-color: #2f2f2f;
 }
 .awssld__content > img {
     opacity: 0.85;
@@ -78,10 +79,7 @@
     background-color: whitesmoke;
     display: grid;
     grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
-    grid-auto-rows: minmax(10vw, auto);
-}
-.test {
-    display: flex;
+    grid-auto-rows: minmax(8vw, auto);
 }
 .qoute {
     align-self: center;
