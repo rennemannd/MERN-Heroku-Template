@@ -56,7 +56,7 @@ class Contact extends React.Component {
            
             <div style={{ height: '100vh', width: '100%' }}>
             <GoogleMapReact
-              bootstrapURLKeys={{ key:"AIzaSyDnfmjZbEobwm3xYpaG-UIqqla-Dabc9gQ"}}
+              bootstrapURLKeys={{ key:""}}
               defaultCenter={this.props.center}
               defaultZoom={this.props.zoom}
             >
