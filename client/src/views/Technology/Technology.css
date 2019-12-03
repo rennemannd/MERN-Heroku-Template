@@ -94,3 +94,34 @@
 	background-position: center;
 	background-size: cover;
 }
+.listTitle1 {
+	grid-column: 2/7;
+	grid-row:16/17;
+	font-family: 'open sans';
+	font-size: 1.3vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-weight: 600;
+	padding-top: 4vw;
+	line-height: 2.5vw;
+}
+.techList1 {
+	grid-column: 3/6;
+	padding: 2vw 2vw;
+	padding-bottom: 4vw !important; 
+	grid-row: 17;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: 'open sans';
+	font-size: 1.1vw;
+}
+.techList1 > ul {
+	margin: 0;
+}
+.techList1 > ul > li {
+	padding: 0.5vw;
+}

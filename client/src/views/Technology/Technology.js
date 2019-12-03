@@ -27,7 +27,20 @@ class Technology extends React.Component {
             			<h2>Evolving Outside the Box</h2>
             		</div>
             	</div>
-            	
+            	<div className="listTitle1">
+            		BioTork can improve any type of microorganism on any kind of substrate.
+            		<br />We can evolve strains for:
+            	</div>
+            	<div className="techList1">
+            		<ul>
+            			<li>Robust growth at non-optimal temperatures, pH or aeration rates that are often encountered in real-world fermentations</li>
+            			<li>Higher tolerance to product inhibition or to toxic compounds produced during real world bioprocesses</li>
+            			<li>Higher growth rates</li>
+            			<li>Higher culture densities</li>
+            			<li>greater product yield</li>
+            			<li>Utilization of non-optimal carbon or nutrient sources</li>
+            		</ul>
+            	</div>
             </div>
         );
     }
