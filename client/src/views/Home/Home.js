@@ -8,7 +8,7 @@ import './Home.css';
 function Home() {
     const slider = (
       <AwesomeSlider>
-        <div data-src={require('../../assets/photos/moon.webp')} className="fix"><h1 className="sliderText">Welcome to Biotork</h1></div>
+        <div data-src={require('../../assets/photos/moon.webp')} className="fix"><h1 className="sliderText">Welcome to BioTork</h1></div>
         <div data-src={require('../../assets/photos/leaf.webp')} className="fix"><h1 className="sliderText">Evolution that Excites</h1></div>
         <div data-src={require('../../assets/photos/rocks.webp')} className="fix"><h1 className="sliderText"></h1></div>
       </AwesomeSlider>
@@ -21,7 +21,7 @@ function Home() {
             <div className = "bgitem3">
                 <div className="gitem3">
                     <h3 className="qoute">
-                    Brought to you by Nissan
+                    Evolving beyond the imagination
                     </h3>
                 </div>
             </div>
