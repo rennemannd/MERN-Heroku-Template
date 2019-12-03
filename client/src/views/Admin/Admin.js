@@ -3,13 +3,13 @@ import './Admin.css';
 
 import PressEdit from './editors/PressEdit'
 import ProjectEdit from './editors/ProjectEdit'
-import Register from './Register/Register'
+import UserEdit from './editors/UserEdit';
 
 class Admin extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentView: "general"
+            currentView: "users"
         };
         this.setCurrentView = this.setCurrentView.bind(this);
     }
@@ -24,13 +24,11 @@ class Admin extends React.Component {
         return (
                         <div class="sidebar-sticky">
                             <ul class="nav flex-column">
-                                <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("general")}>General</button>
+                                <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("users")}>User Management</button>
                                 <div class="divider"/>
                                 <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("projects")}>Projects</button>
                                 <div class="divider"/>
                                 <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("press")}>Press Releases</button>
-                                <div class="divider"/>
-                                <button type="button" class="btn btn-primary" onClick={() => this.setCurrentView("register")}>Register Users</button>
                             </ul>
                         </div>
         );
@@ -51,14 +49,14 @@ class Admin extends React.Component {
                         </div>
                 </div>
             );
-        } else if(currentView === "register") {
+        } else if(currentView === "users") {
             return(
                 <div class="row">
                         <div class="sidebar-viewport">
                             <this.SidebarView/>
                         </div>
                         <div class="editor-viewport"> 
-                            <Register/>
+                            <UserEdit/>
                         </div>
                 </div>
             );
