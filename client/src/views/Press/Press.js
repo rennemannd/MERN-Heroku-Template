@@ -32,7 +32,7 @@ class Press extends React.Component {
                         <div>
                             <td>{press.title}</td>
                         </div>
-                        <img src={press.image} />
+                        <img alt="" src={press.image} />
                         <div>
                             <td>{press.text}</td>
                         </div>

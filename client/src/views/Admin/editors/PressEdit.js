@@ -213,7 +213,7 @@ class PressEdit extends React.Component {
                     </div>
                     <div class="-imageupload editor-element">
                         <div><label>Image to Upload: </label></div>
-                        <img class="-uploadedimage" src={this.state.pressImage} />
+                        <img class="-uploadedimage" alt="" src={this.state.pressImage} />
                         <input type="file" class="form-control-file" onChange={this.handlePressImageChange}></input>
                     </div>
                     <div class="-titlearea editor-element">

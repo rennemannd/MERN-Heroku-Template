@@ -213,7 +213,7 @@ class ProjectEdit extends React.Component {
                     </div>
                     <div class="-imageupload editor-element">
                         <div><label>Image to Upload: </label></div>
-                        <img class="-uploadedimage" src={this.state.projectImage} />
+                        <img class="-uploadedimage" alt="" src={this.state.projectImage} />
                         <input type="file" class="form-control-file" onChange={this.handleProjectImageChange}></input>
                     </div>
                     <div class="-titlearea editor-element">

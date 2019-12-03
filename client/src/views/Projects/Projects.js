@@ -32,7 +32,7 @@ class Project extends React.Component {
                         <div>
                             <td>{project.title}</td>
                         </div>
-                        <img src={project.image} />
+                        <img alt="" src={project.image} />
                         <div>
                             <td>{project.text}</td>
                         </div>
