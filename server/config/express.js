@@ -36,7 +36,7 @@ module.exports.init = () => {
             name: "sid",
             resave: false,
             saveUninitialized: false,
-            secret: "woahthereee",
+            secret: process.env.SECRET || require('./config').secret,
             store: new MongoStore({ mongooseConnection: mongooseSetup.connection }),
             cookie: {
                 httpOnly: true,

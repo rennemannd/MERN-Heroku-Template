@@ -42,7 +42,7 @@ router.get("/verify", (req, res) => {
 
 //Register Handle
 router.post("/register", (req, res) => {
-    if (req.isAuthenticated()) {
+    //if (req.isAuthenticated()) {
 
         const { name, email, password, password2 } = req.body;
 
@@ -112,12 +112,12 @@ router.post("/register", (req, res) => {
             });
         });
 
-    } else {
+   /* } else {
         return res.send({
             success: false,
             message: "unauthorized register"
         });
-    }
+    }*/
 });
 
 //Login handle

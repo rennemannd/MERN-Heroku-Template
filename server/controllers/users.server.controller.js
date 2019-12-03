@@ -156,7 +156,6 @@ exports.update = function (req, res) {
                     errors.push({ msg: "Passwords do not match" });
                 }
 
-
                 if (password.length < 6) {
                     errors.push({ msg: "Password should be at least 6 characters" });
                 }
@@ -230,37 +229,53 @@ exports.delete = function (req, res) {
     if (req.isAuthenticated()) {
 
         
-
-        //ensures email isn't case sensitive
-        let { username } = req.body;
-        username = username.toLowerCase();
-
-       
-        //Validation passed
-        User.findOneAndRemove({ username: username })
-        .then((user) => {
-
-
-            if (user) {
-                return res.send({
-                    success: true,
-                    message: "delete successful"
-                });
-            } else {
+        User.countDocuments({}).limit(2).then((count) => {
+            console.log("Number of users:", count);
+            if (count == 1) {
                 return res.send({
                     success: false,
-                    message: "cannot find user"
+                    message: "cannot delete when only one user remaining"
                 });
             }
-        }).catch((error) => {
-            if (error) {
-                errors.push("Server error: deleting user from database");
-                return res.send({
-                    success: false,
-                    message: errors
-                });
+            else {
+
+
+                //ensures email isn't case sensitive
+                let { username } = req.body;
+                username = username.toLowerCase();
+
+
+                //Validation passed
+                User.findOneAndRemove({ username: username })
+                .then((user) => {
+
+
+                    if (user) {
+                        return res.send({
+                            success: true,
+                            message: "delete successful"
+                        });
+                    } else {
+                        return res.send({
+                            success: false,
+                            message: "cannot find user"
+                        });
+                    }
+                }).catch((error) => {
+                    if (error) {
+                        errors.push("Server error: deleting user from database");
+                        return res.send({
+                            success: false,
+                            message: errors
+                        });
+                    }
+                })
+
             }
         })
+        
+
+        
 
     } else {
         return res.send({
