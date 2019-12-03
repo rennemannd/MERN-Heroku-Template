@@ -1,8 +1,8 @@
 *{
     box-sizing: border-box;
 }
- .App {
-     max-width: 420px;
+ .contact{
+     max-width: 1000px;
      margin: 0 auto;
 }
  p {
@@ -26,7 +26,8 @@
      border: none;
      border-radius: 200px;
      cursor: pointer;
-     align-content: center;
+     align-self: center;
+
 }
   .container {
      border-radius: 5px;
