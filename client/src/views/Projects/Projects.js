@@ -26,7 +26,8 @@ class Project extends React.Component {
         const projectList = projects.sort(function (a, b) {
             return parseInt(Date.parse(b.displayed_date)) - parseInt(Date.parse(a.displayed_date))  //Sort with most recent date first.
           }).map(project => {
-			return (
+
+            return (
                 <div className="project-release">
                     <tr key={project._id}>
                         <div>
@@ -44,8 +45,8 @@ class Project extends React.Component {
                         </div>
                     </tr>
                 </div>
-			);
-		});
+            );
+        });
 
         //Return projectList variable of rendered projects.
         return (
