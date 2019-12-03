@@ -1,60 +1,56 @@
 import React from 'react';
 import './Projects.css';
 
-class Projects extends React.Component {
+const PROJECT_API = '/api/project';
+class Project extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { projects: [] };
+    }
+
+    //Get Projects from API as an array.
+    componentDidMount() {
+        fetch(PROJECT_API)
+        .then(response => response.json())
+        .then(response => this.setState({ projects: response }))
+        .catch(err => {
+            console.log("Error fetching Projects:" + err);
+        });
+    }
+
     render() {
+
+        const { projects } = this.state;
+
+        //Sort Projects by date, render each project object, store in projectList variable.
+        const projectList = projects.sort(function (a, b) {
+            return parseInt(Date.parse(b.displayed_date)) - parseInt(Date.parse(a.displayed_date))  //Sort with most recent date first.
+          }).map(project => {
+            return (
+                <div className="project-release">
+                    <tr key={project._id}>
+                        <div>
+                            <td>{project.title}</td>
+                        </div>
+                        <img alt="" src={project.image} />
+                        <div>
+                            <td>{project.text}</td>
+                        </div>
+                        <div>
+                            <td>{project.displayed_date}</td>
+                        </div>
+                        <div>
+                            <a href={project.doc_link}>Document Link</a>
+                        </div>
+                    </tr>
+                </div>
+            );
+        });
+
+        //Return projectList variable of rendered projects.
         return (
-            <div className="grid-containerP">
-                <div className="gridItem1">
-                	<h1 className ="projecthead">Nutrition</h1>
-                </div>
-                <div className="gridItem1list">
-                	<ul className="list">
-                		<li>Project 1</li>
-                		<li>Project 2</li>
-                		<li>Project 3</li>
-                		<li>Project 4</li>
-                		<li>Project 5</li>
-                	</ul>
-                </div>
-                <div className="gridItem2">
-                	<h1 className ="projecthead">Chemicals</h1>
-                </div>
-                <div className="gridItem2list">
-                	<ul className="list">
-                		<li>Project 1</li>
-                		<li>Project 2</li>
-                		<li>Project 3</li>
-                		<li>Project 4</li>
-                		<li>Project 5</li>
-                	</ul>
-                </div>
-                <div className="gridItem3">
-                	<h1 className ="projecthead">Pharmaceuticals</h1>
-                </div>
-                <div className="gridItem3list">
-                	<ul className="list">
-                		<li>Project 1</li>
-                		<li>Project 2</li>
-                		<li>Project 3</li>
-                		<li>Project 4</li>
-                		<li>Project 5</li>
-                	</ul>
-                </div>
-                <div className="gridItem4">
-                	<h1 className ="projecthead">Renewables</h1>
-                </div>
-                <div className="gridItem4list">
-                	<ul className="list">
-                		<li>Project 1</li>
-                		<li>Project 2</li>
-                		<li>Project 3</li>
-                		<li>Project 4</li>
-                		<li>Project 5</li>
-                	</ul>
-                </div>
-            </div>
+            <div>{projectList}</div> 
         );
     }
 }
-export default Projects;
+export default Project;

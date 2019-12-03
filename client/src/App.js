@@ -4,8 +4,9 @@ import axios from 'axios';
 
 import history from "./history";
 
-import Login from "./views/Login/Login";  
-import Dashboard from "./views/Dashboard/Dashboard";  
+
+import Login from "./views/Login/Login"; 
+
 import AuthenticatedComponent from "./components/AuthenticatedComponent/AuthenticatedComponent";
 
 import Home from "./views/Home/Home"
@@ -34,6 +35,7 @@ class App extends React.Component {
             loggedIn: false,
             user: {}
         };
+
         
     }
 
@@ -42,9 +44,13 @@ class App extends React.Component {
         });
     }
 
+
+    
+
+
     login(route, user, cb) {
-        console.log(user);
         //in production a .catch(err => console.log(err)) should be implemented
+
         axios.post(route, user).then(response => {
             //set own state and execute the callback
             if (response.data.success) {
@@ -54,11 +60,15 @@ class App extends React.Component {
                 //console.log(`Successfully logged in! ${JSON.stringify(response.data)}`);
             }
             cb(response.data);
+        }).catch((error) => {
+            console.log(error);
+            cb(false);
         });
     }
 
     verify(route, cb) {
         axios.get(route).then(response => {
+
             //on success res.data has: success, message, user.name, user.username, user.email, user.logggedIn
             if (!response.data.success) {
                 this.setState({
@@ -124,14 +134,6 @@ class App extends React.Component {
 
                             <AuthenticatedComponent verify={this.verify} loggedIn={this.state.loggedIn}>
                                 <Switch >
-                                    <Route
-                                        exact path="/dashboard"
-                                        render={() => (
-                                            <Dashboard
-                                                user={this.state.user}
-                                            />
-                                        )}
-                                    />
                                     <Route
                                         exact path="/admin"
                                         component={Admin}
