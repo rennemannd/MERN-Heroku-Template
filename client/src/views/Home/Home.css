@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
     grid-auto-rows: minmax(5vw, auto);
+    font-family: 'open sans';
 }
 .gitem {
     grid-column: 1/8;
@@ -54,7 +55,7 @@
     font-family: 'Josefin Sans';
     font-size : 5vw;
     font-weight: 700;
-    letter-spacing: 1vw;
+    letter-spacing: 0.85vw;
     width: 75%;
     text-align: center;
 }
