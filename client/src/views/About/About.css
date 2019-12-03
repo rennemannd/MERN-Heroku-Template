@@ -31,7 +31,7 @@
     color: white;
     text-size-adjust: 24px;
     width:100%;
-    z-index:100;
+    z-index:98;
     grid-row: 1/2;
     grid-column: 4/5;
     position: relative;
