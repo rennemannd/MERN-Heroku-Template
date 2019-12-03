@@ -1,6 +1,8 @@
 import React from 'react';
 import './Contact.css';
 import GoogleMapReact from 'google-map-react';
+
+  
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class Contact extends React.Component {
@@ -20,6 +22,18 @@ class Contact extends React.Component {
           message: '',
         }
       }
+      openPopupbox() {
+        const content = (
+          <div>
+            <p className="quotes">Work like you don't need the money.</p>
+            <p className="quotes">Dance like no one is watching.</p>
+            <p className="quotes">And love like you've never been hurt.</p>
+            <span className="quotes-from">― Mark Twain</span>
+          </div>
+        )
+         .open({ content })
+      }
+      
 
     render() {
         return (
@@ -56,7 +70,7 @@ class Contact extends React.Component {
            
             <div style={{ height: '100vh', width: '100%' }}>
             <GoogleMapReact
-              bootstrapURLKeys={{ key:""}}
+              bootstrapURLKeys={{ key: (process.env.MAPS_API_KEY || '')}}
               defaultCenter={this.props.center}
               defaultZoom={this.props.zoom}
             >
@@ -66,7 +80,6 @@ class Contact extends React.Component {
             </div>
           );
     }
-    
     handleFormSubmit( event ) {
         event.preventDefault();
         console.log(this.state.fname);
@@ -76,7 +89,10 @@ class Contact extends React.Component {
         fetch('/api/press', {
             method: 'POST',
             body: JSON.stringify({
-                targetEmail: this.state.email
+                targetEmail: this.state.email,
+                customerNameLast: this.state.lname,
+                customerNameFirst: this.state.fname,
+                customerMessage: this.state.message
             })
           })
 
