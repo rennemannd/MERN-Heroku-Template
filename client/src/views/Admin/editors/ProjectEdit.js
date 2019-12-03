@@ -189,6 +189,8 @@ class ProjectEdit extends React.Component {
           });
         }
 
+        this.setClearing(false);
+
       }
 
       clearConfirmDialog(props) {
@@ -211,7 +213,7 @@ class ProjectEdit extends React.Component {
                 </p>
               </Modal.Body>
               <Modal.Footer>
-                <Button onClick={this.handleClear, props.onHide()} variant="danger" >Delete</Button>
+                <Button onClick={this.handleClear} variant="danger" >Delete</Button>
                 <Button onClick={props.onHide}>Cancel</Button>
               </Modal.Footer>
             </Modal>
@@ -235,7 +237,7 @@ class ProjectEdit extends React.Component {
                 </p>
               </Modal.Body>
               <Modal.Footer>
-                <Button onClick={this.handleClear, props.onHide} variant="danger" >Clear</Button>
+                <Button onClick={this.handleClear} variant="danger" >Clear</Button>
                 <Button onClick={props.onHide}>Cancel</Button>
               </Modal.Footer>
             </Modal>
