@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter, Redirect } from "react-router-dom";
+import './Login.css';
 
 class Login extends Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
-            redirectTo: "/dashboard",
+            redirectTo: "/admin",
             loginError: "",
             isLoading: false
         };
@@ -45,7 +46,7 @@ class Login extends Component {
                     isLoading: false
                 });
 
-                console.log(`Successfully logged in! ${JSON.stringify(data)}`);
+                console.log(`Successfully logged in!`);
 
                 this.props.history.push("/admin");
             } else {
@@ -53,7 +54,7 @@ class Login extends Component {
                     username: "",
                     password: "",
                     isLoading: false,
-                    loginError: data.message
+                    loginError: "Incorrect Login"
                 });
                 this.props.history.push("/users/login");
             }

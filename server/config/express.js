@@ -5,10 +5,11 @@ const path = require('path'),
     session = require("express-session"),
     MongoStore = require("connect-mongo")(session),
     passport = require("passport"),
-    users = require("../routes/users"),
+    users = require("../routes/users.server.routes"),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     pressRouter = require('../routes/press.server.routes');
+    projectRouter = require('../routes/project.server.routes');
 
 module.exports.init = () => {
     //connect to database
@@ -36,7 +37,7 @@ module.exports.init = () => {
             name: "sid",
             resave: false,
             saveUninitialized: false,
-            secret: "secret",
+            secret: process.env.SECRET || require('./config').secret,
             store: new MongoStore({ mongooseConnection: mongooseSetup.connection }),
             cookie: {
                 httpOnly: true,
@@ -55,6 +56,12 @@ module.exports.init = () => {
     app.use("/api/users", users); //api for user authentication
 
     app.use('/api/press', pressRouter, function (res, req, next) { //api for press releases
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
+
+    app.use('/api/project', projectRouter, function (res, req, next) { //api for press releases
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         next();
