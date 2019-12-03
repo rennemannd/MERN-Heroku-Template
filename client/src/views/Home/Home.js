@@ -21,7 +21,7 @@ function Home() {
             <div className = "bgitem3">
                 <div className="gitem3">
                     <h3 className="qoute">
-                    Brought to you by Nissan
+                    Evolving beyond the imagination
                     </h3>
                 </div>
             </div>
