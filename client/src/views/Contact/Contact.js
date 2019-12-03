@@ -56,7 +56,7 @@ class Contact extends React.Component {
            
             <div style={{ height: '100vh', width: '100%' }}>
             <GoogleMapReact
-              bootstrapURLKeys={{ key:""}}
+              bootstrapURLKeys={{ key:"AIzaSyDnfmjZbEobwm3xYpaG-UIqqla-Dabc9gQ"}}
               defaultCenter={this.props.center}
               defaultZoom={this.props.zoom}
             >
@@ -66,7 +66,7 @@ class Contact extends React.Component {
             </div>
           );
     }
-
+    
     handleFormSubmit( event ) {
         event.preventDefault();
         console.log(this.state.fname);
@@ -76,7 +76,7 @@ class Contact extends React.Component {
         fetch('/api/press', {
             method: 'POST',
             body: JSON.stringify({
-                targetmail: this.state.email
+                targetEmail: this.state.email
             })
           })
 
