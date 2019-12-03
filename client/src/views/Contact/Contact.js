@@ -1,7 +1,6 @@
 import React from 'react';
 import './Contact.css';
 import GoogleMapReact from 'google-map-react';
-import Marker from 'google-map-react'
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class Contact extends React.Component {
@@ -57,7 +56,7 @@ class Contact extends React.Component {
            
             <div style={{ height: '100vh', width: '100%' }}>
             <GoogleMapReact
-              bootstrapURLKeys={{ key:"AIzaSyDnfmjZbEobwm3xYpaG-UIqqla-Dabc9gQ"}}
+              bootstrapURLKeys={{ key:""}}
               defaultCenter={this.props.center}
               defaultZoom={this.props.zoom}
             >
@@ -67,7 +66,7 @@ class Contact extends React.Component {
             </div>
           );
     }
-   
+
     handleFormSubmit( event ) {
         event.preventDefault();
         console.log(this.state.fname);
