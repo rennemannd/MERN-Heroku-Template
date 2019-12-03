@@ -8,5 +8,8 @@ router.route('/')
 
 router.route('/update')
   .post(press.updateExisting)
+
+router.route('/delete')
+  .post(press.deleteEntry)
   
 module.exports = router;
