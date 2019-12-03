@@ -110,19 +110,17 @@ exports.get = function (req, res) {
             });
         }
         else {
-            User.find({}, function (error, users) {
-                if (error) {
-                    console.log(error);
-                    res.status(400).send(error);
+            User.find({}, function(err, users) {
+                if(err) {
+                  console.log(err);
+                  res.status(400).send(err);
+                } else {
+                  res.status(200).send(users.sort(function (a, b) {
+                    return a.name - b.name
+                  }));
                 }
-                else {
-                    return res.send({
-                        users: users,
-                        success: true,
-                        message: "Succcessful getAll!"
-                    });
-                }
-            }).sort('name');
+              
+              });
         }
     }
     else {
