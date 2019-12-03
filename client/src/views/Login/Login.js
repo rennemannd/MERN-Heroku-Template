@@ -15,7 +15,7 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
-            redirectTo: "/dashboard",
+            redirectTo: "/admin",
             loginError: "",
             isLoading: false
         };

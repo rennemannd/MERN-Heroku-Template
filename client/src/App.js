@@ -5,8 +5,7 @@ import axios from 'axios';
 import history from "./history";
 
 
-import Login from "./views/Login/Login";  
-import Dashboard from "./views/Dashboard/Dashboard";  
+import Login from "./views/Login/Login";   
 import AuthenticatedComponent from "./components/AuthenticatedComponent/AuthenticatedComponent";
 
 import Home from "./views/Home/Home"
@@ -134,14 +133,6 @@ class App extends React.Component {
 
                             <AuthenticatedComponent verify={this.verify} loggedIn={this.state.loggedIn}>
                                 <Switch >
-                                    <Route
-                                        exact path="/dashboard"
-                                        render={() => (
-                                            <Dashboard
-                                                user={this.state.user}
-                                            />
-                                        )}
-                                    />
                                     <Route
                                         exact path="/admin"
                                         component={Admin}
