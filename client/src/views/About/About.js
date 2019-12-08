@@ -7,7 +7,6 @@ import text from './data.js';
 import tabs from './dates.js';
 import names from './names.js';
 import description from './description';
-import Mission from './Mission.js';
 import Rick from './rick.png';
 import HP from './HP.png';
 import oak from './oak.png';
@@ -70,10 +69,7 @@ class About extends React.Component {
                     flexDirection: 'column',
                     color: 'white',
                     fontSize: '24px',
-                    borderStyle: 'solid',
-                    borderWidth: '6px',
-                    borderColor: '#A4E98D',
-                    borderRadius: '100px'
+                    borderRadius: '80px'
                 }}>
                 <img src={z} className = 'crdimg' /> 
                 {x}
@@ -99,10 +95,7 @@ class About extends React.Component {
                 flexDirection: 'column',
                 color: 'white',
                 fontSize: '24px',
-                borderStyle: 'solid',
-                borderWidth: '6px',
-                borderColor: '#A4E98D',
-                borderRadius: '100px'
+                borderRadius: '80px'
                 }} >
                 {x}
               </BackSide>)
@@ -152,23 +145,20 @@ class About extends React.Component {
             </Flippy>
         );
 
-        
-
-
         return (
             <body className = 'grid_containerA'>
-                 <img className="img" src={cell_banner} center />
-                <h1 className="abt">About Us</h1>
-                    <img className = 'imgTime' src={cell_banner}/>
+                <img className="img" src={cell_banner} center />
+                <h2 className="abt">About Us</h2>
                 <div className = 'mission'>                 
-                    <h1 className = 'pushDown'>Mission Statement </h1>
+                    <h1 className = 'pushDown'><span>Mission Statement</span> </h1>
                     <div>
                     <p className = 'alignA'> Here at BioTork, our mission is to improve world sustainability and the environmental conditions of our planet for generations to come. Recycling waste, sustainable agriculture and renewable energy are threads that run through all of the projects we undertake. By improving biological processes, we convert low-value agricultural by-products to commodities such as renewable energy and high value supplements.</p>
                     <p className = 'alignA'> As a company, we are dedicated to preserving the gifts and harnessing the power of nature.</p>
                     </div>
                 </div>
+               
                 <div className = 'business_info'>
-                    <h1 className = 'pushDown'>Business Model </h1>
+                     <h1 className = 'bussmodelTitle'><span>Business Model </span></h1>
                     <div>
                     <p className = 'alignA'>The financial potential of BioTork is endless. With the license to utilize an exclusive, patented evolution technology, BioTork can improve any kind of microorganism on any substrate. The result is an infinite number of applications of our technology and expertise. Improving the cellular factories is like changing the software of a process without needing to change the hardware. Therefore, our business strategy is based on this software model.</p>
                     <p className = 'alignA'>Once a market and potential partners have been identified, BioTork offers two possible commercialization pathways for its optimized cellular factories:</p>
@@ -182,9 +172,8 @@ class About extends React.Component {
                         <p className = 'it5'>This involves partnering with industry players already connected with the targeted value chain to accelerate scale-up towards commercial production.  </p>
                     
                     </div>
+                    <h1 className = 'internalTitle'><span> Internal Development Projects</span> </h1>
                     <div className = 'ProjectsA'>
-                        <h1 className = 'pushDown'> Internal Development Projects </h1>
-    
                         <p className = 'alignA'> <strong>Omega-3 Fatty Acids</strong>: Highly unsaturated omega-3 fatty acids like DHA and EPA are very high-value oils currently sourced from wild caught fish. BioTork has been developing heterotrophic algae capable of producing high oil titers that are rich in DHA and EPA.</p>
                         <p className = 'alignA'>These algae produce these oils with high efficiency on low-cost agroindustrial feedstocks such as thin stillage, cane juice concentrate, molasses and crude glycerol. These algae produce oil and biomass that can be used as a replacement for fish oil and fish meal in animal feed formulations and in the nutraceutical and cosmeceutical industries.</p>
                         <p className = 'alignA'><strong>Fuel Ethanol Yeasts</strong>: The fuel ethanol industry relies on S. cerevisiae as the workhorse fermentation organism. The majority of the industry relies on a single strain produced by LeSaffre called Ethanol Red. BioTork has developed a derivative of Ethanol Red that produces 2-5% more ethanol per batch. This strain has been tested by several fuel ethanol producers and its improved performance has been confirmed. We are currently in negotiations to pilot this strain with a major yeast manufacturer and corn ethanol producer. BioTork is also developing its own line of non-GMO yeasts that produce glucoamylase to reduce the enzyme costs for corn ethanol producers. In addition, BioTork is working with a major yeast developer to improve an already-commericalized genetically engineered yeast strain capable of producing glucoamylase.</p>
@@ -192,23 +181,24 @@ class About extends React.Component {
                         <p className = 'alignA'><strong>Phytase</strong>: Phytase is a valuable enzyme used in the food and feed industries to reduce the antinutrient properties of phytic acid in grains. BioTork has developed a strain of filamentous fungus that secretes 60-fold more phytase enzyme than the parent strain. This strain can be used to produce a non-GMO phytase for the feed market. Moreover, the strain can be used as a production platform for making genetically engineered phytases with improved thermotolerant.</p>
                         <p className = 'alignA'><strong>High Temperature E. coli</strong>: E. coli is a workhorse cellular factory. BioTork has developed a strain of E. coli capable of robust growth at 49⁰C. This strain can be used as a platform chemical production strain for processes that require higher temperatures.    </p>
                     </div>
-                
-                <div className = 'TimeLine'>
-                    <h1 className = 'pushDown'> Timeline </h1>
+
+                <h1 className = 'timelineTitle'> <span>Timeline</span> </h1>
+                <div className = 'timeLine'>
                     <div>
                         {ControlledTabs}
+                        <img className="img" src={cell_banner} center />
                     </div>
                 </div> 
-                <div className = 'this'>
-                    <h1>Leadership</h1>
-                    <div className = 'this'>
+                <h1 className = 'leaderTitle'><span>Leadership</span></h1>
+                <div className = 'leaderCards'>
+                    <div className = 'leaderCards'>
                     {founderCards(names_data[0],desc_data[0], Rick)}
                     {founderCards(names_data[1],desc_data[1], HP)}
                     {founderCards(names_data[2],desc_data[2], oak)}
                     </div>
                 </div>
-                <div className = 'Sponsors'>
-                    <h1 className = 'pushDown'>Our Sponsors</h1>
+                <h1 className = 'sponsorTitle'><span>Our Sponsors</span></h1>
+                <div className = 'sponsorLogos'>
                     <img className = 'log1' src = {wolf}/>
                     <img className = 'log2' src = {git}/>
                     <img className = 'log3' src = {dead}/>
