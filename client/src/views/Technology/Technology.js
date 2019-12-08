@@ -23,6 +23,7 @@ class Technology extends React.Component {
 	            	</div>
             	</div>
             	<div className="bg2">
+                <a id="advantages"/>
             		<div className="banner2">
             			<h2>Evolving Outside the Box</h2>
             		</div>

@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import './Header.css';
 import { Navbar, Nav, Button, Dropdown} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import Logout from "../Logout/Logout";
+import { HashLink as Link } from 'react-router-hash-link';
 
 class Header extends React.Component {
     constructor(props) {
@@ -63,9 +64,9 @@ class Header extends React.Component {
                                     <LinkContainer to="/technology/#overview">
                                         <Dropdown.Item>Overview</Dropdown.Item>
                                     </LinkContainer>
-                                    <LinkContainer to="/technology/#biotorkadvantage">
-                                        <Dropdown.Item href="/technology/#biotorkadvantage">BioTork Advantages</Dropdown.Item>
-                                    </LinkContainer>
+                                    
+                                        <Dropdown.Item href="/technology#advantages">BioTork Advantages</Dropdown.Item>
+                                    
                                 </Dropdown.Menu>
                             </Dropdown>
                             <Dropdown >

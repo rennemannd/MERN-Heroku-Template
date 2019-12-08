@@ -147,6 +147,7 @@ class About extends React.Component {
 
         return (
             <body className = 'grid_containerA'>
+                <div className="bimgbg" />
                 <img className="img" src={cell_banner} center />
                 <h2 className="abt">About Us</h2>
                 <div className = 'mission'>                 

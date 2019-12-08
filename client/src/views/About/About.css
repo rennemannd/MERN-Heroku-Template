@@ -4,7 +4,13 @@
   display: grid;
   grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
   grid-auto-rows: minmax(5vw, auto);
-  font-family: 'open-sams';
+  font-family: 'open sans';
+}
+
+.bimgbg {
+  grid-column: 1/8;
+  grid-row: 1/2;
+  background-color: #2f2f2f;
 }
 
 .img{
@@ -13,7 +19,7 @@
   max-height: 100%;
   grid-column: 1/8;
   grid-row:  1/2;
-  opacity: 0.8;
+  opacity: 0.625;
 }
 
 .internalTitle{
@@ -32,13 +38,9 @@
   font-family: 'montserrat';
 }
 
-h1 {
-  border-bottom: 1px solid #000; 
-  line-height: 0.1em;
-  margin: 20px 0 auto; 
-} 
 
-h1 span { 
+
+h1 > span { 
    background:#fff; 
    padding:0 10px; 
 }
@@ -53,14 +55,10 @@ h1 span {
   width: 250px;  
 }
 
-h2 {
-  text-decoration: underline;
-}
-
  .abt {
     text-align: center;
     color: white;
-    text-size-adjust: 64px;
+    font-size: 3vw;
     width:100%;
     z-index:98;
     grid-row: 1/2;
@@ -107,6 +105,7 @@ h2 {
   grid-column: 1;
   grid-row: 1;
   text-align: left;
+  text-decoration: underline;
 }
 .it2{
   grid-column: 1;
@@ -117,6 +116,7 @@ h2 {
   grid-column: 3;
   grid-row: 1;
   text-align: left;
+  text-decoration: underline;
 }
 .it4{
   grid-column: 3;

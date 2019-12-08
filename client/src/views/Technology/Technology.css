@@ -11,14 +11,14 @@
 	color: white;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(47, 47, 47, 0.45);
+	background-color: rgba(47, 47, 47, 0.375);
 	font-family: 'montserrat';
 	text-align: justify;
 }
 .banner1 > h2 {
 	font-weight: 600;
 	font-size: 3vw;
-	margin: none;
+	margin: 0px;
 }
 .bg1 {
 	grid-column: 1/8;
@@ -124,4 +124,8 @@
 }
 .techList1 > ul > li {
 	padding: 0.5vw;
+}
+.bg2 > a {
+	position: relative;
+	top: -39px;
 }
