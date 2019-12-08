@@ -125,7 +125,7 @@
 .techList1 > ul > li {
 	padding: 0.5vw;
 }
-.bg2 > a {
+.bg2 > a, .bg1 > a {
 	position: relative;
 	top: -39px;
 }

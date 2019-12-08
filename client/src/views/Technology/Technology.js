@@ -6,6 +6,7 @@ class Technology extends React.Component {
         return (
             <div className="grid-containerT">
             	<div className="bg1">
+                <a id="overview"/>
             		<div className="banner1">
             			<h2>Technology</h2>
             		</div>

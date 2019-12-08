@@ -61,35 +61,15 @@ class Header extends React.Component {
                                 <Dropdown.Toggle split id="dropdown-split-basic" />
 
                                 <Dropdown.Menu>
-                                    <LinkContainer to="/technology/#overview">
-                                        <Dropdown.Item>Overview</Dropdown.Item>
-                                    </LinkContainer>
-                                    
+                                        <Dropdown.Item href="/technology#overview">Overview</Dropdown.Item>
                                         <Dropdown.Item href="/technology#advantages">BioTork Advantages</Dropdown.Item>
-                                    
                                 </Dropdown.Menu>
                             </Dropdown>
-                            <Dropdown >
+                            <div>
                                 <Link to="/projects">
                                     <Button className="navButton">Projects</Button>
                                 </Link>
-                                <Dropdown.Toggle split id="dropdown-split-basic" />
-
-                                <Dropdown.Menu>
-                                    <LinkContainer to="/projects/#nutrition">
-                                        <Dropdown.Item>Nutrition</Dropdown.Item>
-                                    </LinkContainer>
-                                    <LinkContainer to="/projects/#chemicals">
-                                        <Dropdown.Item>Chemicals</Dropdown.Item>
-                                    </LinkContainer>
-                                    <LinkContainer to="/projects/#pharmacy">
-                                        <Dropdown.Item>Pharmaceuticals</Dropdown.Item>
-                                    </LinkContainer>
-                                    <LinkContainer to="/projects/#renewables">
-                                        <Dropdown.Item>Renewables</Dropdown.Item>
-                                    </LinkContainer>
-                                </Dropdown.Menu>
-                            </Dropdown>
+                            </div>
                             <div>
                                 <Link to="/publications">
                                     <Button className="navButton" >Publications</Button>
