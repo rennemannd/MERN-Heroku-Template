@@ -16,6 +16,33 @@
   opacity: 0.8;
 }
 
+.internalTitle{
+  text-align: left;
+  grid-column: 2/6;
+  grid-row: 10;
+  margin-bottom: 1vw;
+  font-family: 'montserrat';
+}
+
+.bussmodelTitle{
+  text-align: left;
+  grid-column: 2/3;
+  grid-row: 5;
+  margin-bottom: 1vw;
+  font-family: 'montserrat';
+}
+
+h1 {
+  border-bottom: 1px solid #000; 
+  line-height: 0.1em;
+  margin: 20px 0 auto; 
+} 
+
+h1 span { 
+   background:#fff; 
+   padding:0 10px; 
+}
+
 
 .alignA{
   text-align: left;
@@ -26,24 +53,35 @@
   width: 250px;  
 }
 
+h2 {
+  text-decoration: underline;
+}
+
  .abt {
     text-align: center;
     color: white;
-    text-size-adjust: 24px;
+    text-size-adjust: 64px;
     width:100%;
     z-index:98;
     grid-row: 1/2;
     grid-column: 4/5;
     position: relative;
     transform: translate(0%, 40%);
+    font-family: 'montserrat';
+  }
+
+  .center{
+    text-align: center;
+    grid-column: 4/5;
+    position: relative;
   }
 
 .mission{
   text-align: left;
   color: black;
   width:100%;
-  grid-column: 2/8;
-  grid-row:  3;
+  grid-column: 2/7;
+  grid-row:  4;
   overflow: hidden;
   display: block;
 }
@@ -52,9 +90,8 @@
 .business_info{
   text-align: left;
   color: black;
-  width:100%;
-  grid-column: 2/8;
-  grid-row:  5;
+  grid-column: 2/7;
+  grid-row:  6;
 }
 
 .license {
@@ -69,22 +106,27 @@
 .it1{
   grid-column: 1;
   grid-row: 1;
+  text-align: left;
 }
 .it2{
   grid-column: 1;
   grid-row: 2;
+  text-align: left;
 }
 .it3{
   grid-column: 3;
   grid-row: 1;
+  text-align: left;
 }
 .it4{
   grid-column: 3;
   grid-row: 2;
+  text-align: left;
 }
 .it5{
   grid-column: 3;
   grid-row: 3;
+  text-align: left;
 }
 
 .ProjectsA{
@@ -97,11 +139,20 @@
   font-family: 'montserrat';
 }
 
-  .TimeLine {
+.timelineTitle{
+  text-align: center;
+  grid-column: 4;
+  grid-row: 13;
+  font-family: 'montserrat';
+}
+
+  .timeLine {
     text-align: center;
     color: black;
     grid-column: 1/8;
     grid-row: 14;   
+    width: 100%;
+    z-index:98;
   }
 
   .container {
@@ -113,35 +164,35 @@
     color: black;
     text-align: center;
     font-size: 36px;
+    z-index:98;
   }
 
-  .line {
-    color: black;
-    text-align: center;
-    bottom: -60%;  
-    position: absolute;
-    width: 100%;
-  }
+ 
 
   .tab {
     list-style: none;
     display: table; /* [1] */
     table-layout: fixed; /* [2] */
     width: 100%; /* [3] */
+    z-index:98;
+    background:black; color:whitesmoke;
   }
+
+  .tabs__item .active a{background:black; color:whitesmoke;}
 
   .tabs__item {
     display: table-cell; /* [4] */
+    width: 100%;
+    text-align: center;
+    z-index:98;
 }
 
-.grid_containerA .imgTime {
-    z-index: -1;
-    filter: brightness(50%);
-    width: 100%;
+.imgTime {
+  z-index: -10;
+  filter: brightness(50%);
+  width: 100%;
   object-fit: cover;
   max-height: 100%;
-  grid-column: 1/8;
-  grid-row:  15;
   opacity: 0.8;
   }
 
@@ -164,12 +215,19 @@
     justify-Content: 'center';
   }
 
-  .this{
+  .leaderCards{
     flex:1 0 200px;
      display: flex;
       justify-content: space-around;
      grid-column: 1/8;
      grid-row: 19;
+  }
+
+  .leaderTitle{
+    text-align: center;
+    grid-column: 4;
+    grid-row: 18;
+    font-family: 'montserrat';
   }
 
   .crdimg {
@@ -195,7 +253,14 @@
     color: white;
   }
 
-  .Sponsors {
+  .sponsorTitle{
+    text-align: center;
+    grid-column: 4/5;
+    grid-row: 21;
+    font-family: 'montserrat';
+  }
+
+  .sponsorLogos {
     display: grid;
   grid-template-columns: auto auto auto auto;
   grid-template-rows: auto auto auto auto;
