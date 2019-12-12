@@ -1,0 +1,38 @@
+.header {
+    background: #282c34;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 1%;
+}
+
+.nav-logo {
+    display:flex;
+    height: 50px;
+    width: 50px;
+    padding: 10%;
+}
+
+.nav-logo:hover {
+
+}
+
+.nav-items {
+    display:flex;
+    margin-left: auto;
+    margin-right: 5%;
+    align-items: center;
+}
+
+.nav-link {
+    background-color: #09d3ac;
+    color: black;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    background-color: #08bd9a;
+}
+
