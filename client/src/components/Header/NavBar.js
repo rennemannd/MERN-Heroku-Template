@@ -13,15 +13,12 @@ const NavBar = () => {
             {/* Page Links */}
             <div className = "nav-items">
                 <Link className = "nav-link" to='/Home'>Home</Link>
-                <Link className = "nav-link" to='/Register'>Sign in</Link>
-                <Link className = "nav-link" to='/projects'>Projects</Link>
-                <a className = "nav-link" target='_blank' rel="noopener noreferrer" href="https://www.facebook.com/groups/ufosc/events/?source=4&action_history=null&filter=calendar">
-                    Events
+                <Link className = "nav-link" to='/Register'>Extra Page</Link>
+                <a className = "nav-link" target='_blank' rel="noopener noreferrer" href="https://reactjs.org/docs/getting-started.html">
+                    React Docs
                 </a>
-                <a  className = "nav-link" target='_blank' rel="noopener noreferrer" href="https://github.com/ufosc/club-resources">
-                    Resources
-                </a>
-                <Link className = "nav-link" to="/about">About</Link>
+                <a className = "nav-link" target="_blank" rel="noopener noreferrer" href="https://reactjs.org/tutorial/tutorial.html">React Tutorial</a>
+                <a className = "nav-link" target="_blank" rel="noopener norefferer" href="https://nodejs.org/en/docs/">Node Docs</a>
             </div>
 
         </div>
